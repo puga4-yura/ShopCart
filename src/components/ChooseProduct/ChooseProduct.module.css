@@ -1,0 +1,11 @@
+.resultContainer {
+    flex: 1;
+    margin: 10px;
+
+}
+
+.resultContainerItem {
+    padding: 10px;
+    border: 2px solid black;
+    min-height: 300px;
+}
