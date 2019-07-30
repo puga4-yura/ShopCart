@@ -42,7 +42,7 @@ class App extends React.Component {
             )
         });
     }
-
+    // roman
     removeElement = el => {
         const newList = this.state.qty.filter(function (item) {
             return item.id !== el.id;
