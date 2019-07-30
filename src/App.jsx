@@ -22,17 +22,44 @@ class App extends React.Component {
         };
     };
 
+    calculatePrice(items){
+       return items.map((item)=> Number(item.price))
+    }
+
+    calcualteBasketPrice(items){
+       return items.reduce(function (sum, current) {
+            return sum + current;
+        }, 0);
+    }
+
+    renderProduct(items){
+        return items.map(function (item) {
+            return (
+                <div>
+                    <div>{item.title}</div>
+                    <div>Цена: {item.price}</div>
+                </div>
+            )
+        });
+    }
+
     removeElement = el => {
         const newList = this.state.qty.filter(function (item) {
             return item.id !== el.id;
-
         });
-        const newListAfterDelete = this.state.productToWillBuyCount.filter(function (item) {
+
+        const updateElement = this.state.productToWillBuyCount.filter(function (item) {
             return item.id !== el.id
-        })
+        });
+
+        const ListNameProd = this.renderProduct(updateElement);
+        const ListPriceProd = this.calculatePrice(updateElement);
+        const allPrice= this.calcualteBasketPrice(ListPriceProd);
 
         this.setState({
-            productToWillBuyCount: newListAfterDelete
+            productToWillBuyCount: updateElement,
+            productToWillBuyListName: ListNameProd,
+            productToWillPrice: allPrice
         });
 
         this.setState({
@@ -40,33 +67,18 @@ class App extends React.Component {
         });
     };
 
-    productToWillBuyCount = el => {
-        const updateElement = [... this.state.productToWillBuyCount];
-        updateElement.push(el)
-        console.log(updateElement)
-        const ListNameProd  = updateElement.map(function (item) {
-            return (
-              <div>
-                  <div>{item.title}</div>
-                  <div>Цена: {item.price}</div>
-              </div>
-              )
-            console.log(item.title)
-        })
+    productToWillBuyCount=el=> {
+        const updateElement = [...this.state.productToWillBuyCount];
+        updateElement.push(el);
 
-        const ListPriceProd  = updateElement.map(function (item) {
-            return Number(item.price)
-        })
+        const ListNameProd = this.renderProduct(updateElement);
+        const ListPriceProd = this.calculatePrice(updateElement);
+        const allPrice= this.calcualteBasketPrice(ListPriceProd);
 
-        console.log(ListPriceProd)
-        var allPrice = ListPriceProd.reduce(function(sum, current) {
-            return sum + current;
-        }, 0);
 
-        console.log(allPrice)
         this.setState({
             productToWillBuyCount: updateElement,
-            productToWillBuyListName:  ListNameProd,
+            productToWillBuyListName: ListNameProd,
             productToWillPrice: allPrice
         })
     };
@@ -77,28 +89,14 @@ class App extends React.Component {
             return item.id !== el.id;
         });
 
-        const ListNameProd  = updataNewList.map(function (item) {
-            return (
-              <div>
-                  <div>{item.title}</div>
-                  <div>{item.price}</div>
-              </div>
-            )
-        })
+        const ListNameProd = this.removeElement(updataNewList);
+        const ListPriceProd = this.calculatePrice(updataNewList);
+        const allPrice= this.calcualteBasketPrice(ListPriceProd);
 
-
-        const ListPriceProd  = updataNewList.map(function (item) {
-            return Number(item.price)
-        })
-
-        console.log(ListPriceProd)
-        const allPrice = ListPriceProd.reduce(function(sum, current) {
-            return sum + current;
-        }, 0);
 
         this.setState({
             productToWillBuyCount: updataNewList,
-            productToWillBuyListName:  ListNameProd,
+            productToWillBuyListName: ListNameProd,
             productToWillPrice: allPrice
         });
     };
@@ -120,11 +118,11 @@ class App extends React.Component {
                         )
                     })}
                 </div>
-                    <ResultCart
-                      productToWillBuyCount = {this.state.productToWillBuyCount}
-                      productToWillBuyListName = {this.state.productToWillBuyListName}
-                      productToWillPrice = {this.state.productToWillPrice}
-                    />
+                <ResultCart
+                    productToWillBuyCount={this.state.productToWillBuyCount}
+                    productToWillBuyListName={this.state.productToWillBuyListName}
+                    productToWillPrice={this.state.productToWillPrice}
+                />
             </div>
         )
     }
