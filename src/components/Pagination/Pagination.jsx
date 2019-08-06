@@ -1,25 +1,26 @@
 import React from "react"
+import s from "./Pagination.module.css"
 
-class Pagination extends React.Component{
-  constructor (props) {
-    super();
-    this.state = {
-    
-    }
-    let www = this.props.qty.length;
-    console.log(www)
+//res =  counr / 4
+const Pagination = (props) =>{
+  let numberItem =  props.item.length
+  let pageCount =  Math.ceil(numberItem / 4);
+
+  let pages =[];
+
+  for(let i = 1; i <= pageCount; i ++ ) {
+    pages.push(i)
   }
-  
-  render() {
-   // let www = this.props.qty.length;
-    
-    //console.log(www)
-    return (
-      <div>
-        1
-      </div>
-    )
-  }
+
+  console.log(pages)
+  return (
+    <div>
+      {pages.map((page) => {
+        return <span className={s.active}>{page}</span>
+      })}
+    </div>
+  )
 }
+
 
 export default Pagination ;

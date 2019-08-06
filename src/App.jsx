@@ -23,7 +23,9 @@ class App extends React.Component {
         };
     };
 
+
     calculatePrice(items){
+        //console.log(this.state.qty.length);
        return items.map((item)=> Number(item.price))
     }
 
@@ -105,6 +107,8 @@ class App extends React.Component {
     render() {
         return (
             <div className="mainContainer">
+                <Pagination  item={this.state.qty}/>
+
                 <div className="products">
                     {this.state.qty.map(el => {
                         return (
@@ -119,7 +123,8 @@ class App extends React.Component {
                             </div>
                         )
                     })}
-                    <Pagination  el={this.state.qty}/>
+
+
                 </div>
                 <ResultCart
                     productToWillBuyCount={this.state.productToWillBuyCount}

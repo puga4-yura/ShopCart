@@ -2,7 +2,7 @@ import React from 'react'
 import s from "./ChooseProduct.module.css"
 
 const ResultCart = (props) => {
- console.log(props)
+ //console.log(props)
     return (
       <div className={s.resultContainer}>
         <div className={s.resultContainerItem}>
