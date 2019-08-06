@@ -4,6 +4,7 @@ import Product from "./components/productcart/Product"
 import ResultCart from "./components/ChooseProduct/ChooseProduct"
 import logo from './logo.svg';
 import './App.css';
+import Pagination from "./components/Pagination/Pagination";
 
 // сделать отдельные функции для пересчета
 // вынести в отдельный компонет (выбор товара)
@@ -42,7 +43,7 @@ class App extends React.Component {
             )
         });
     }
-    // roman
+    
     removeElement = el => {
         const newList = this.state.qty.filter(function (item) {
             return item.id !== el.id;
@@ -114,9 +115,11 @@ class App extends React.Component {
                                     removeElement={this.removeElement}
                                     productToWillBuyCount={this.productToWillBuyCount}
                                     removeElementFromBuy={this.removeElementFromBuy}/>
+                                  
                             </div>
                         )
                     })}
+                    <Pagination  el={this.state.qty}/>
                 </div>
                 <ResultCart
                     productToWillBuyCount={this.state.productToWillBuyCount}
@@ -127,6 +130,5 @@ class App extends React.Component {
         )
     }
 }
-
 
 export default App;
