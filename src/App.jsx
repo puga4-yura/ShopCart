@@ -107,22 +107,26 @@ class App extends React.Component {
     render() {
         return (
             <div className="mainContainer">
-                <Pagination  item={this.state.qty}/>
-
                 <div className="products">
-                    {this.state.qty.map(el => {
-                        return (
-                            <div>
-                                <Product
+                    <div>
+                        <Pagination  item={this.state.qty}/>
+                    </div>
+                    <div className="product-list">
+                        {this.state.qty.map(el => {
+                            return (
+                              <div>
+                                  <Product
                                     key={el.id}
                                     el={el}
                                     removeElement={this.removeElement}
                                     productToWillBuyCount={this.productToWillBuyCount}
                                     removeElementFromBuy={this.removeElementFromBuy}/>
-                                  
-                            </div>
-                        )
-                    })}
+          
+                              </div>
+                            )
+                        })}
+                    </div>
+
 
 
                 </div>

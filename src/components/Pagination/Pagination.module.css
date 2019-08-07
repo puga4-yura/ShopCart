@@ -1,3 +1,15 @@
-.active {
-    color: red;
+.paginationContainer {
+    margin: 20px;
+}
+
+.paginationItem {
+    color: #ffffff;
+    background: mediumaquamarine;
+    font-size: 13px;
+    width: 30px;
+    height: 30px;
+    margin-right: 3px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
 }

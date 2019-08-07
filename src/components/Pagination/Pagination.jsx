@@ -14,9 +14,9 @@ const Pagination = (props) =>{
 
   console.log(pages)
   return (
-    <div>
+    <div className={s.paginationContainer}>
       {pages.map((page) => {
-        return <span className={s.active}>{page}</span>
+        return <span className={s.paginationItem}>{page}</span>
       })}
     </div>
   )
