@@ -103,14 +103,17 @@ class App extends React.Component {
             productToWillPrice: allPrice
         });
     };
-
+    
+    //console.log(pages);
     render() {
+        //console.log(pages);
         return (
             <div className="mainContainer">
                 <div className="products">
                     <div>
                         <Pagination  item={this.state.qty}/>
                     </div>
+                  
                     <div className="product-list">
                         {this.state.qty.map(el => {
                             return (

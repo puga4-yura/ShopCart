@@ -12,7 +12,7 @@ const Pagination = (props) =>{
     pages.push(i)
   }
 
-  console.log(pages)
+  //console.log(pages)
   return (
     <div className={s.paginationContainer}>
       {pages.map((page) => {
