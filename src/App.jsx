@@ -55,7 +55,7 @@ class App extends React.Component {
         });
     }
 
-    removeElement = el => {
+     removeElement = el => {
         const newList = this.state.qty.filter(function (item) {
             return item.id !== el.id;
         });
@@ -76,10 +76,11 @@ class App extends React.Component {
 
         this.setState({
             qty: newList
-        });
-        setTimeout(()=>{
+        }, () => {
             this.paginationClick(this.currentPage, this.pageSize)
-        },100)
+        });
+
+
 
     };
 
