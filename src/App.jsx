@@ -77,7 +77,10 @@ class App extends React.Component {
         this.setState({
             qty: newList
         });
+        setTimeout(()=>{
             this.paginationClick(this.currentPage, this.pageSize)
+        },100)
+
     };
 
     productToWillBuyCount = el => {
