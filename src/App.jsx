@@ -12,30 +12,39 @@ import Pagination from "./components/Pagination/Pagination";
 // название товара что бы выводилось 2 СЛОВА ТОЛЬКО
 // пагинация
 class App extends React.Component {
+    currentPage = 1;
+    pageSize = 4;
+
     constructor() {
         super();
 
         this.state = {
             qty: data,
+            pageData: data.slice(0, 4),
             productToWillBuyCount: [],
             productToWillBuyListName: [],
             productToWillPrice: []
         };
+        this.paginationClick = this.paginationClick.bind(this);
     };
 
+    paginate(page) {
 
-    calculatePrice(items){
-        //console.log(this.state.qty.length);
-       return items.map((item)=> Number(item.price))
     }
 
-    calcualteBasketPrice(items){
-       return items.reduce(function (sum, current) {
+
+    calculatePrice(items) {
+        //console.log(this.state.qty.length);
+        return items.map((item) => Number(item.price))
+    }
+
+    calcualteBasketPrice(items) {
+        return items.reduce(function (sum, current) {
             return sum + current;
         }, 0);
     }
 
-    renderProduct(items){
+    renderProduct(items) {
         return items.map(function (item) {
             return (
                 <div>
@@ -45,7 +54,7 @@ class App extends React.Component {
             )
         });
     }
-    
+
     removeElement = el => {
         const newList = this.state.qty.filter(function (item) {
             return item.id !== el.id;
@@ -57,7 +66,7 @@ class App extends React.Component {
 
         const ListNameProd = this.renderProduct(updateElement);
         const ListPriceProd = this.calculatePrice(updateElement);
-        const allPrice= this.calcualteBasketPrice(ListPriceProd);
+        const allPrice = this.calcualteBasketPrice(ListPriceProd);
 
         this.setState({
             productToWillBuyCount: updateElement,
@@ -68,15 +77,16 @@ class App extends React.Component {
         this.setState({
             qty: newList
         });
+            this.paginationClick(this.currentPage, this.pageSize)
     };
 
-    productToWillBuyCount=el=> {
+    productToWillBuyCount = el => {
         const updateElement = [...this.state.productToWillBuyCount];
         updateElement.push(el);
 
         const ListNameProd = this.renderProduct(updateElement);
         const ListPriceProd = this.calculatePrice(updateElement);
-        const allPrice= this.calcualteBasketPrice(ListPriceProd);
+        const allPrice = this.calcualteBasketPrice(ListPriceProd);
 
 
         this.setState({
@@ -94,7 +104,7 @@ class App extends React.Component {
 
         const ListNameProd = this.removeElement(updataNewList);
         const ListPriceProd = this.calculatePrice(updataNewList);
-        const allPrice= this.calcualteBasketPrice(ListPriceProd);
+        const allPrice = this.calcualteBasketPrice(ListPriceProd);
 
 
         this.setState({
@@ -103,7 +113,17 @@ class App extends React.Component {
             productToWillPrice: allPrice
         });
     };
-    
+
+    paginationClick(page, pageSize) {
+        const pageData = this.state.qty.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
+        this.setState({
+            pageData: pageData
+        });
+        this.pageSize = pageSize;
+        this.currentPage = page;
+        console.log(page, pageSize, this.state.pageData)
+    }
+
     //console.log(pages);
     render() {
         //console.log(pages);
@@ -111,25 +131,24 @@ class App extends React.Component {
             <div className="mainContainer">
                 <div className="products">
                     <div>
-                        <Pagination  item={this.state.qty}/>
+                        <Pagination onPaginationClick={this.paginationClick} item={this.state.qty}/>
                     </div>
-                  
+
                     <div className="product-list">
-                        {this.state.qty.map(el => {
+                        {this.state.pageData.map(el => {
                             return (
-                              <div>
-                                  <Product
-                                    key={el.id}
-                                    el={el}
-                                    removeElement={this.removeElement}
-                                    productToWillBuyCount={this.productToWillBuyCount}
-                                    removeElementFromBuy={this.removeElementFromBuy}/>
-          
-                              </div>
+                                <div>
+                                    <Product
+                                        key={el.id}
+                                        el={el}
+                                        removeElement={this.removeElement}
+                                        productToWillBuyCount={this.productToWillBuyCount}
+                                        removeElementFromBuy={this.removeElementFromBuy}/>
+
+                                </div>
                             )
                         })}
                     </div>
-
 
 
                 </div>

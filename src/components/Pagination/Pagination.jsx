@@ -2,24 +2,28 @@ import React from "react"
 import s from "./Pagination.module.css"
 
 //res =  counr / 4
-const Pagination = (props) =>{
-  let numberItem =  props.item.length
-  let pageCount =  Math.ceil(numberItem / 4);
+const Pagination = (props) => {
+    const pageSize = 4;
+    //props.onPaginationClick(0, pageSize);
+    let numberItem = props.item.length;
+    let pageCount = Math.ceil(numberItem / pageSize);
 
-  let pages =[];
+    let pages = [];
 
-  for(let i = 1; i <= pageCount; i ++ ) {
-    pages.push(i)
-  }
+    for (let i = 1; i <= pageCount; i++) {
+        pages.push(i)
+    }
 
-  //console.log(pages)
-  return (
-    <div className={s.paginationContainer}>
-      {pages.map((page) => {
-        return <span className={s.paginationItem}>{page}</span>
-      })}
-    </div>
-  )
+    //console.log(pages)
+    return (
+
+        <div className={s.paginationContainer}>
+            {pages.map((page) => {
+                return <button className={s.paginationItem} onClick={() => props.onPaginationClick(page, pageSize)}>{page}</button>
+                //return <button className={s.paginationItem} onClick={props.onPaginationClick.bind(this,page, pageSize)}>{page}</button>
+            })}
+        </div>
+    )
 }
 
 
