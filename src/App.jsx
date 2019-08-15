@@ -1,17 +1,31 @@
 import React from 'react';
 import {data} from "./store/store.jsx"
-import Product from "./components/productcart/Product"
-import ResultCart from "./components/ChooseProduct/ChooseProduct"
+import Product from "./components/MainPage/productcart/Product"
+import ResultCart from "./components/MainPage/ChooseProduct/ChooseProduct"
 import logo from './logo.svg';
 import './App.css';
-import Pagination from "./components/Pagination/Pagination";
+import Pagination from "./components/MainPage/Pagination/Pagination";
+import NavBar from "./components/Navigation/SiteBar";
+import {BrowserRouter, Route} from "react-router-dom";
 
-// сделать отдельные функции для пересчета
-// вынести в отдельный компонет (выбор товара)
-// при удалении дтовара что бы пересчитыывалась карта
-// название товара что бы выводилось 2 СЛОВА ТОЛЬКО
-// пагинация
-class App extends React.Component {
+
+class App = (props) => {
+    return (
+      <BrowserRouter>
+          <NavBar/>
+      <div>
+          <Route path='MainPage' componen={MainContent}/>
+         <Route path='AddProduct' component={AddProduct}/>
+
+      </div>
+      </BrowserRouter>
+    )
+}
+
+export default App
+
+
+/*class App extends React.Component {
     currentPage = 1;
     pageSize = 4;
 
@@ -28,13 +42,7 @@ class App extends React.Component {
         this.paginationClick = this.paginationClick.bind(this);
     };
 
-    paginate(page) {
-
-    }
-
-
     calculatePrice(items) {
-        //console.log(this.state.qty.length);
         return items.map((item) => Number(item.price))
     }
 
@@ -127,43 +135,47 @@ class App extends React.Component {
         this.currentPage = page;
         console.log(page, pageSize, this.state.pageData)
     }
-
-    //console.log(pages);
+    
     render() {
-        //console.log(pages);
         return (
-            <div className="mainContainer">
-                <div className="products">
-                    <div>
-                        <Pagination onPaginationClick={this.paginationClick} item={this.state.qty}/>
-                    </div>
-
-                    <div className="product-list">
-                        {this.state.pageData.map(el => {
-                            return (
+          <div>
+              
+              <div className="mainContainer">
+                  <div className="products">
+                      <div>
+                          <Pagination onPaginationClick={this.paginationClick} item={this.state.qty}/>
+                      </div>
+            
+                      <div className="product-list">
+                          {this.state.pageData.map(el => {
+                              return (
                                 <div>
                                     <Product
-                                        key={el.id}
-                                        el={el}
-                                        removeElement={this.removeElement}
-                                        productToWillBuyCount={this.productToWillBuyCount}
-                                        removeElementFromBuy={this.removeElementFromBuy}/>
-
+                                      key={el.id}
+                                      el={el}
+                                      removeElement={this.removeElement}
+                                      productToWillBuyCount={this.productToWillBuyCount}
+                                      removeElementFromBuy={this.removeElementFromBuy}/>
+                      
                                 </div>
-                            )
-                        })}
-                    </div>
-
-
-                </div>
-                <ResultCart
+                              )
+                          })}
+                      </div>
+        
+        
+                  </div>
+                  <ResultCart
                     productToWillBuyCount={this.state.productToWillBuyCount}
                     productToWillBuyListName={this.state.productToWillBuyListName}
                     productToWillPrice={this.state.productToWillPrice}
-                />
-            </div>
+                  />
+              </div>
+              
+          </div>
+          
+
         )
     }
 }
 
-export default App;
+//export default App;
