@@ -1,5 +1,20 @@
-.App {
-  text-align: center;
+.body {
+  display: grid;
+
+  grid-template-areas:
+          "h h"
+          "m m "
+          "f  f"
+;
+  grid-template-rows: 60px 1fr 60px;
+  grid-template-columns:  1fr;
+  grid-gap: 16px;
+  height: 100vh;
+}
+
+.mainContent {
+  grid-area: m;
+  background: rgba(115, 119, 136, 0.67);
 }
 
 .mainContainer {

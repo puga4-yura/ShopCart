@@ -1,0 +1,10 @@
+.header {
+    grid-area: h;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(127, 24, 215, 0.78);
+}
+.activeLink {
+    color: #282c34;
+}

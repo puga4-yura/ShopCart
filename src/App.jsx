@@ -4,25 +4,32 @@ import Product from "./components/MainPage/productcart/Product"
 import ResultCart from "./components/MainPage/ChooseProduct/ChooseProduct"
 import logo from './logo.svg';
 import './App.css';
-import Pagination from "./components/MainPage/Pagination/Pagination";
 import NavBar from "./components/Navigation/SiteBar";
+import MainPage from "./components/MainPage/MainPage"
+import AddProduct from "./components/AddProduct/AddProduct"
+import Footer from "./components/Footer/Footer";
+import Pagination from "./components/MainPage/Pagination/Pagination";
 import {BrowserRouter, Route} from "react-router-dom";
 
 
-class App = (props) => {
+const App = () => {
     return (
       <BrowserRouter>
+        <div className="body">
           <NavBar/>
-      <div>
-          <Route path='MainPage' componen={MainContent}/>
-         <Route path='AddProduct' component={AddProduct}/>
+          <div className='mainContent'>
+            <Route path='MainPage'  conponent={MainPage} />
+            <Route path='AddProduct'  conponent={AddProduct} />
+          </div>
+          <Footer/>
+        </div>
 
-      </div>
+
       </BrowserRouter>
     )
-}
+};
 
-export default App
+export default App;
 
 
 /*class App extends React.Component {
@@ -135,17 +142,17 @@ export default App
         this.currentPage = page;
         console.log(page, pageSize, this.state.pageData)
     }
-    
+
     render() {
         return (
           <div>
-              
+
               <div className="mainContainer">
                   <div className="products">
                       <div>
                           <Pagination onPaginationClick={this.paginationClick} item={this.state.qty}/>
                       </div>
-            
+
                       <div className="product-list">
                           {this.state.pageData.map(el => {
                               return (
@@ -156,13 +163,13 @@ export default App
                                       removeElement={this.removeElement}
                                       productToWillBuyCount={this.productToWillBuyCount}
                                       removeElementFromBuy={this.removeElementFromBuy}/>
-                      
+
                                 </div>
                               )
                           })}
                       </div>
-        
-        
+
+
                   </div>
                   <ResultCart
                     productToWillBuyCount={this.state.productToWillBuyCount}
@@ -170,12 +177,12 @@ export default App
                     productToWillPrice={this.state.productToWillPrice}
                   />
               </div>
-              
+
           </div>
-          
+
 
         )
     }
 }
 
-//export default App;
+//export default App;*/
