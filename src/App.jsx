@@ -18,8 +18,8 @@ const App = () => {
         <div className="body">
           <NavBar/>
           <div className='mainContent'>
-            <Route path='MainPage'  conponent={MainPage} />
-            <Route path='AddProduct'  conponent={AddProduct} />
+            <Route path='MainPage'  render={() => <MainPage/> }/>
+            <Route path='AddProduct' render={ () => <AddProduct/>}/>
           </div>
           <Footer/>
         </div>
