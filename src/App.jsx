@@ -1,25 +1,19 @@
 import React from 'react';
-import {data} from "./store/store.jsx"
-import Product from "./components/MainPage/productcart/Product"
-import ResultCart from "./components/MainPage/ChooseProduct/ChooseProduct"
-import logo from './logo.svg';
 import './App.css';
 import NavBar from "./components/Navigation/SiteBar";
 import MainPage from "./components/MainPage/MainPage"
 import AddProduct from "./components/AddProduct/AddProduct"
 import Footer from "./components/Footer/Footer";
-import Pagination from "./components/MainPage/Pagination/Pagination";
 import {BrowserRouter, Route} from "react-router-dom";
 
-
-const App = () => {
+const App = (props) => {
     return (
       <BrowserRouter>
         <div className="body">
           <NavBar/>
           <div className='mainContent'>
-            <Route path='MainPage'  render={() => <MainPage/> }/>
-            <Route path='AddProduct' render={ () => <AddProduct/>}/>
+           <Route path='/MainPage'  render={() => <MainPage data={props.appState}/> }/>
+            <Route path='/AddProduct' render={ () =><AddProduct/>}/>
           </div>
           <Footer/>
         </div>

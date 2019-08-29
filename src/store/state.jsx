@@ -1,4 +1,4 @@
-export let data = [
+let state = [
     {
     "id": 89859632,
     "title": "Сандалии Skechers 51873 NVY 46 (12) 30 см (192283106071)",
@@ -5638,3 +5638,98 @@ export let data = [
         }
     }
 }]
+
+export default state;
+// calculatePrice(items) {
+//     return items.map((item) => Number(item.price))
+// }
+//
+// calcualteBasketPrice(items) {
+//     return items.reduce(function (sum, current) {
+//         return sum + current;
+//     }, 0);
+// }
+//
+// renderProduct(items) {
+//     return items.map(function (item) {
+//         return (
+//           <div>
+//               <div>{item.title}</div>
+//               <div>Цена: {item.price}</div>
+//           </div>
+//         )
+//     });
+// }
+//
+// removeElement = el => {
+//     const newList = this.state.qty.filter(function (item) {
+//         return item.id !== el.id;
+//     });
+//
+//     const updateElement = this.state.productToWillBuyCount.filter(function (item) {
+//         return item.id !== el.id
+//     });
+//
+//     const ListNameProd = this.renderProduct(updateElement);
+//     const ListPriceProd = this.calculatePrice(updateElement);
+//     const allPrice = this.calcualteBasketPrice(ListPriceProd);
+//
+//     this.setState({
+//         productToWillBuyCount: updateElement,
+//         productToWillBuyListName: ListNameProd,
+//         productToWillPrice: allPrice
+//     });
+//
+//     this.setState({
+//         qty: newList
+//     }, () => {
+//         this.paginationClick(this.currentPage, this.pageSize)
+//     });
+//
+//
+//
+// };
+//
+// productToWillBuyCount = el => {
+//     const updateElement = [...this.state.productToWillBuyCount];
+//     updateElement.push(el);
+//
+//     const ListNameProd = this.renderProduct(updateElement);
+//     const ListPriceProd = this.calculatePrice(updateElement);
+//     const allPrice = this.calcualteBasketPrice(ListPriceProd);
+//
+//
+//     this.setState({
+//         productToWillBuyCount: updateElement,
+//         productToWillBuyListName: ListNameProd,
+//         productToWillPrice: allPrice
+//     })
+// };
+//
+//
+// removeElementFromBuy = el => {
+//     const updataNewList = this.state.productToWillBuyCount.filter(function (item) {
+//         return item.id !== el.id;
+//     });
+//
+//     const ListNameProd = this.removeElement(updataNewList);
+//     const ListPriceProd = this.calculatePrice(updataNewList);
+//     const allPrice = this.calcualteBasketPrice(ListPriceProd);
+//
+//
+//     this.setState({
+//         productToWillBuyCount: updataNewList,
+//         productToWillBuyListName: ListNameProd,
+//         productToWillPrice: allPrice
+//     });
+// };
+//
+// paginationClick(page, pageSize) {
+//     const pageData = this.state.qty.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
+//     this.setState({
+//         pageData: pageData
+//     });
+//     this.pageSize = pageSize;
+//     this.currentPage = page;
+//     console.log(page, pageSize, this.state.pageData)
+// }
