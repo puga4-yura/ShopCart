@@ -6,10 +6,11 @@ import * as serviceWorker from './serviceWorker';
 import state from "./store/state"
 
 ReactDOM.render(
-  <App appState={state}/>,
+  <App state={state.product}/>,
   
   document.getElementById('root'));
 
+//console.log(state.product)
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA

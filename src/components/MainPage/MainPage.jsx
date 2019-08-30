@@ -3,6 +3,7 @@ import Product from "./productcart/Product";
 import Pagination from "./Pagination/Pagination";
 
 const MainPage = (props) => {
+  //debugger
   console.log(props)
   
   let ProductInfo = props.data.map(productInfo =>

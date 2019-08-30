@@ -7,12 +7,14 @@ import Footer from "./components/Footer/Footer";
 import {BrowserRouter, Route} from "react-router-dom";
 
 const App = (props) => {
+  //console.log(props.state)
+  //debugger
     return (
       <BrowserRouter>
         <div className="body">
           <NavBar/>
           <div className='mainContent'>
-           <Route path='/MainPage'  render={() => <MainPage data={props.appState}/> }/>
+           <Route path='/MainPage'  render={() => <MainPage data={props.state}/> }/>
             <Route path='/AddProduct' render={ () =><AddProduct/>}/>
           </div>
           <Footer/>
