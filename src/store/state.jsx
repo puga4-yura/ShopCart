@@ -1,3 +1,5 @@
+import {renderEntireTree} from "../render";
+
 let state = {
     product: [
             {
@@ -5641,8 +5643,38 @@ let state = {
             }
     ]
 }
-
 export default state;
+
+export removeElement = () => {
+    
+    console.log(11)
+    // const newList = this.state.product.filter(function (item) {
+    //     return item.id !== el.id;
+    // });
+
+    //renderEntireTree(newList)
+    renderEntireTree(state)
+    // const updateElement = this.state.productToWillBuyCount.filter(function (item) {
+    //     return item.id !== el.id
+    // });
+
+    // const ListNameProd = this.renderProduct(updateElement);
+    // const ListPriceProd = this.calculatePrice(updateElement);
+    // const allPrice = this.calcualteBasketPrice(ListPriceProd);
+
+    // this.setState({
+    //     productToWillBuyCount: updateElement,
+    //     productToWillBuyListName: ListNameProd,
+    //     productToWillPrice: allPrice
+    // });
+
+    // this.setState({
+    //     qty: newList
+    // }, () => {
+    //     this.paginationClick(this.currentPage, this.pageSize)
+    // });
+};
+
 // calculatePrice(items) {
 //     return items.map((item) => Number(item.price))
 // }
@@ -5664,35 +5696,8 @@ export default state;
 //     });
 // }
 //
-// removeElement = el => {
-//     const newList = this.state.qty.filter(function (item) {
-//         return item.id !== el.id;
-//     });
-//
-//     const updateElement = this.state.productToWillBuyCount.filter(function (item) {
-//         return item.id !== el.id
-//     });
-//
-//     const ListNameProd = this.renderProduct(updateElement);
-//     const ListPriceProd = this.calculatePrice(updateElement);
-//     const allPrice = this.calcualteBasketPrice(ListPriceProd);
-//
-//     this.setState({
-//         productToWillBuyCount: updateElement,
-//         productToWillBuyListName: ListNameProd,
-//         productToWillPrice: allPrice
-//     });
-//
-//     this.setState({
-//         qty: newList
-//     }, () => {
-//         this.paginationClick(this.currentPage, this.pageSize)
-//     });
-//
-//
-//
-// };
-//
+
+
 // productToWillBuyCount = el => {
 //     const updateElement = [...this.state.productToWillBuyCount];
 //     updateElement.push(el);

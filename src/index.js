@@ -4,11 +4,9 @@ import './index.css';
 import App from './App.jsx';
 import * as serviceWorker from './serviceWorker';
 import state from "./store/state"
+import {renderEntireTree} from "./render";
 
-ReactDOM.render(
-  <App state={state.product}/>,
-  
-  document.getElementById('root'));
+renderEntireTree(state);
 
 //console.log(state.product)
 // If you want your app to work offline and load faster, you can change
