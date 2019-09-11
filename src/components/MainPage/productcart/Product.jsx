@@ -6,11 +6,11 @@ const Product = (props) => {
     <div className={s.containerProduct}>
       <div>{props.title}</div>
       <img src={props.img} alt="photo"/>
-      <button className={s.delete}>Delete</button>
+      <button  className={s.delete}>Delete</button>
     </div>
   )
 }
-
+//onClick={props.removeElement}
 export default Product;
 // class Product extends React.Component{
 //     constructor (){

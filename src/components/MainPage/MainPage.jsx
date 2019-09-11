@@ -4,11 +4,11 @@ import Pagination from "./Pagination/Pagination";
 
 const MainPage = (props) => {
   //debugger
-  console.log(props)
+  //console.log(props.removeElement)
   
-  let ProductInfo = props.data.map(productInfo =>
-    <Product title={productInfo.title} img={productInfo.image_main}/>)
-  
+  let ProductInfo = props.data.product.map(productInfo =>
+    <Product   title={productInfo.title} img={productInfo.image_main}/>)
+  //removeElement={props.removeElement}
   return (
     <div>
       <Pagination store={props.data}/>

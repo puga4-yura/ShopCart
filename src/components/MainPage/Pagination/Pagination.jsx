@@ -5,7 +5,7 @@ const Pagination = (props) => {
     console.log(props)
     const pageSize = 4;
     let numberItem = props.store.length;
-    console.log(numberItem)
+    //console.log(numberItem)
     let pageCount = Math.ceil(numberItem / pageSize);
 
      let pages = [];
