@@ -8,9 +8,10 @@ import store from "./store/state"
 
 export let rerenderEntireTree = (state) => {
   ReactDOM.render(
-    <App state={store.getState()} />,
+    <App state={store.getState()} removeElement={store.removeElement.bind(store)} />,
     document.getElementById('root'));
 }
+
 //removeElement={store.removeElement}
 rerenderEntireTree(store.getState());
 
