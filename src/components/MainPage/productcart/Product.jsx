@@ -2,11 +2,16 @@ import React from 'react'
 import s from "./Product.module.css"
 
 const Product = (props) => {
+    const product=props.product;
+    let removeEl=()=>props.removeElement(product);
+
   return (
     <div className={s.containerProduct}>
-      <div>{props.title}</div>
-      <img src={props.img} alt="photo"/>
-      <button  className={s.delete}>Delete</button>
+        <img src={product.img} alt="photo"/>
+      <div>{product.title}</div>
+
+      <button  onClick={removeEl}
+               className={s.delete}>Delete</button>
     </div>
   )
 }
