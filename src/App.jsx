@@ -15,7 +15,7 @@ const App = (props) => {
           <NavBar/>
           <div className='mainContent'>
            <Route path='/MainPage'  render={() => <MainPage data={props.state}
-                                                            removeElement={props.removeElement}/> }/>
+                                                            dispatch={props.dispatch}/> }/>
             <Route path='/AddProduct' render={ () =><AddProduct/>}/>
           </div>
           <Footer/>

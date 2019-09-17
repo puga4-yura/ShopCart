@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../index";
+
 let store  = {
     _state :{
         product: [
@@ -5653,9 +5655,23 @@ let store  = {
     subscribe (observer) {
         this._callSubcriber = observer;
     },
-    // removeElement () {
-    //
-    // }
+    _removeElement (el) {
+        //debugger
+        const updated = this._state.product.filter(function (item) {
+        return item.id !== el.id;
+    });
+       this._state.product = updated
+      rerenderEntireTree(this._state.product)
+    },
+    
+    dispatch(action) { // type: 'REMOVE-ELEMENT'
+      if(action.type === 'REMOVE-ELEMENT'){
+        this._removeElement(action);
+      }
+      // else if  {
+      //
+      // }
+    }
 }
 
 // let state = {
@@ -11055,7 +11071,7 @@ let store  = {
 //                     "gift": true,
 //                     "size": true
 //                 },
-//                 "root_id": 1162030,
+//                 "root_id": 1162030,я
 //                 "groups": {
 //                     "block": {
 //                         "Размер": [{

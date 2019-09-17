@@ -2,20 +2,24 @@ import React from 'react'
 import s from "./Product.module.css"
 
 const Product = (props) => {
-    const product=props.product;
-    let removeEl=()=>props.removeElement(product);
+  //debugger
+   const product=props.product;
+   //console.log(product.id)
+  
+  let removeEl=()=>{
+    const action = {type: 'REMOVE-ELEMENT', id: product.id};
+    props.dispatch(action);
+  }
 
   return (
     <div className={s.containerProduct}>
         <img src={product.img} alt="photo"/>
-      <div>{product.title}</div>
-
-      <button  onClick={removeEl}
-               className={s.delete}>Delete</button>
+        <div>{product.title}</div>
+        <button  onClick={removeEl}
+                 className={s.delete}>Delete</button>
     </div>
   )
 }
-//onClick={props.removeElement}
 export default Product;
 // class Product extends React.Component{
 //     constructor (){

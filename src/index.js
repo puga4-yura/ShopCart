@@ -8,7 +8,7 @@ import store from "./store/state"
 
 export let rerenderEntireTree = (state) => {
   ReactDOM.render(
-    <App state={store.getState()} removeElement={store.removeElement.bind(store)} />,
+    <App state={store.getState()} dispatch={store.dispatch.bind(store)} />,
     document.getElementById('root'));
 }
 

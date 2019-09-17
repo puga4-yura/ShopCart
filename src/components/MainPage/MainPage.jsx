@@ -9,7 +9,7 @@ const MainPage = (props) => {
   let ProductInfo = props.data.product.map(productInfo =>
     <Product   title={productInfo.title}
                product={productInfo}
-               removeElement={props.removeElement}
+               dispatch={props.dispatch}
                img={productInfo.image_main}/>)
   //removeElement={props.removeElement}
   return (
