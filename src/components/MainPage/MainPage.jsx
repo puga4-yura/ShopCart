@@ -1,6 +1,7 @@
 import React from 'react'
 import Product from "./productcart/Product";
 import Pagination from "./Pagination/Pagination";
+import ResultCart from "./ChooseProduct/ChooseProduct";
 
 const MainPage = (props) => {
   //debugger
@@ -11,13 +12,12 @@ const MainPage = (props) => {
                product={productInfo}
                dispatch={props.dispatch}
                img={productInfo.image_main}/>)
-  //removeElement={props.removeElement}
   return (
     <div>
       <Pagination store={props.data}/>
       <div className="product-list">
         {ProductInfo}
-    
+       <ResultCart/>
         {/*{props.data.map(el => {*/}
         {/*return (*/}
         {/*<div>*/}

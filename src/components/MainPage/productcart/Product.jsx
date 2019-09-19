@@ -2,9 +2,7 @@ import React from 'react'
 import s from "./Product.module.css"
 
 const Product = (props) => {
-  //debugger
-   const product=props.product;
-   //console.log(product.id)
+  const product=props.product;
   
   let removeEl=()=>{
     const action = {type: 'REMOVE-ELEMENT', id: product.id};
