@@ -14,7 +14,7 @@ const App = (props) => {
         <div className="body">
           <NavBar/>
           <div className='mainContent'>
-           <Route path='/MainPage'  render={() => <MainPage data={props.state}
+           <Route path='/MainPage'  render={() => <MainPage state={props.state}
                                                             dispatch={props.dispatch}/> }/>
             <Route path='/AddProduct' render={ () =><AddProduct/>}/>
           </div>

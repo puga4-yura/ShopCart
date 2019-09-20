@@ -1,6 +1,8 @@
 const REMOVE_ELEMENT = 'REMOVE-ELEMENT';
+const TO_WILL_BUY = 'TO_WILL_BUY';
 
 export const removeElementActionCreate = (product) => ({type: REMOVE_ELEMENT, id: product.id});
+export const productToWillBuyCount = (product) => ({type: TO_WILL_BUY, productTitle: product.title, productPrice: product.price});
 
 
 let store  = {
@@ -5645,7 +5647,8 @@ let store  = {
                     }
                 }
             }
-        ]
+        ],
+        result: []
     },
     getState () {
         return this._state;
@@ -5664,25 +5667,25 @@ let store  = {
        this._state.product = updated
        this._callSubcriber(this._state.product)
     },
-    
-    _.productToWillBuyCount = (el) => {
-        let productToWillBuyCount =[];
-        const updateElement = [...this.state.productToWillBuyCount];
-        updateElement.push(el);
-        
-        const ListNameProd = this.renderProduct(updateElement);
-        const ListPriceProd = this.calculatePrice(updateElement);
-        const allPrice = this.calcualteBasketPrice(ListPriceProd);
-        
+    _productToWillBuyCount(el) {
+       //console.log(el)
+       // let productToWillBuyCount =[];
+       // const updateElement = [...this.state.productToWillBuyCount];
+        this._state.result.push(el);
+        //console.log(this._state.result.push(el));
+        this._callSubcriber(this._state.product);
+        //const ListNameProd = this.renderProduct(updateElement);
+        //const ListPriceProd = this.calculatePrice(updateElement);
+        //const allPrice = this.calcualteBasketPrice(ListPriceProd);
         
     },
     dispatch(action) { // type: 'REMOVE-ELEMENT'
       if(action.type === REMOVE_ELEMENT){
         this._removeElement(action);
       }
-      // else if  {
-      //
-      // }
+       else if (action.type === TO_WILL_BUY) {
+          this._productToWillBuyCount(action)
+       }
     }
 }
 
