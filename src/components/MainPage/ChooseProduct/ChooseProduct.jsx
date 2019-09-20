@@ -3,11 +3,13 @@ import s from "./ChooseProduct.module.css"
 
 const ResultCart = (props) => {
   //console.log(props)
-  console.log(props)
+  //console.log(props)
+  
+  // как достать значения
   let productToWillBuyCount = props.store.result.length;
-  let productToWillBuyListName = props.store.result.productTitle;
-  //let productToWillBuyListPrice = props.store.result.productPrice;
-  let productToWillBuyListPrice = props.store.result.title;
+  let productToWillBuyListName = 'a';//props.store.result.productTitle;
+  let productToWillBuyListPrice = 'b';//props.store.result.productPrice;
+  //let productToWillBuyListPrice = props.store.result.title;
   console.log(productToWillBuyListPrice)
     return (
       <div className={s.resultContainer}>
