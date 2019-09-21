@@ -1,18 +1,23 @@
 import React from 'react'
 import s from "./Product.module.css"
+import {removeToWillBuyCount} from "../../../store/state";
 
 const Product = (props) => {
   const product = props.product;
-  
   let removeEl = () => {
     const action = {type: 'REMOVE-ELEMENT', id: product.id};
     props.dispatch(action);
   }
   
-  let productToWillBuyCount = () => {
-    const action = {type: 'TO_WILL_BUY', productTitle: product.title, productPrice: product.price};
+  let addToCard = () => {
+    const action = {type: 'TO_WILL_BUY', product,index:props.index};
     props.dispatch(action);
   }
+
+    let removeFromCard = () => {
+        const action = {type: 'REMOVE_TO_WILL_BUY', product,index:props.index};
+        props.dispatch(action);
+    }
   
   
   return (
@@ -20,7 +25,9 @@ const Product = (props) => {
       <img src={product.img} alt="photo"/>
       <div>{product.title}</div>
       <div>
-        <button onClick={productToWillBuyCount} className={s.addCart}>Add Will Buy</button>
+          {!props.product.inCart ?
+              (<button onClick={addToCard} className={s.addCart}>Add Will Buy</button>):
+              (<button onClick={removeFromCard} className={s.delete}>Remove</button>)}
         {/*{this.state.willBuy ?*/}
           {/*(<button className={s.addCart}*/}
                    {/*onClick={() => {*/}
