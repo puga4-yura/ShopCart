@@ -5674,10 +5674,10 @@ let store  = {
     },
     _productToWillBuyCount(el,index) {
         el.inCart=true;
-        this._state.product={
+        this._state.product=Object.values({
             ...this._state.product,
             [index]:el
-        }
+        });
         console.log(this._state.product)
        // let productToWillBuyCount =[];
        // const updateElement = [...this.state.productToWillBuyCount];
@@ -5695,11 +5695,10 @@ let store  = {
     const updataNewList = this._state.result.filter(function (item) {
         return item.id !== el.id;
     });
-
-        this._state.product={
+        this._state.product=Object.values({
             ...this._state.product,
             [index]:el
-        }
+        });
     this._state.result = updataNewList;
     this._state.willBuy= true;
     this._callSubcriber(this._state.result)

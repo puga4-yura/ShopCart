@@ -8,7 +8,7 @@ const MainPage = (props) => {
   //debugger
   //console.log(props.removeElement)
   console.log('pr',props.state.product)
-  let ProductInfo = Object.values(props.state.product).map((productInfo,index) =>
+  let ProductInfo = props.state.product.map((productInfo,index) =>
     <Product   title={productInfo.title}
                willBuy={props.state.willBuy}
                product={productInfo}
