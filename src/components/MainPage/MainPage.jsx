@@ -7,10 +7,12 @@ import s from "./MainPage.module.css"
 const MainPage = (props) => {
   //debugger
   //console.log(props.removeElement)
-  
-  let ProductInfo = props.state.product.map(productInfo =>
+  console.log('pr',props.state.product)
+  let ProductInfo = props.state.product.map((productInfo,index) =>
     <Product   title={productInfo.title}
+               willBuy={props.state.willBuy}
                product={productInfo}
+               index={index}
                dispatch={props.dispatch}
                img={productInfo.image_main}/>)
   return (

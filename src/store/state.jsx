@@ -1,6 +1,6 @@
 const REMOVE_ELEMENT = 'REMOVE-ELEMENT';
 const TO_WILL_BUY = 'TO_WILL_BUY';
-const REMOVE_TO_WILL_BUY = 'REMOVE_TO_WILL_BUY'
+const REMOVE_TO_WILL_BUY = 'REMOVE_TO_WILL_BUY';
 
 export const removeElementActionCreate = (product) => ({type: REMOVE_ELEMENT, id: product.id});
 export const productToWillBuyCount = (product) => ({type: TO_WILL_BUY, productTitle: product.title, productPrice: product.price});
@@ -5650,12 +5650,14 @@ let store  = {
                 }
             }
         ],
-        result: []
+        result: [],
+        willBuy: false
     },
     getState () {
         return this._state;
     },
-    
+
+
     _callSubcriber () {
         console.log('ololol');
     },
@@ -5666,37 +5668,54 @@ let store  = {
         const updated = this._state.product.filter(function (item) {
         return item.id !== el.id;
     });
-       this._state.product = updated
-       this._callSubcriber(this._state.product)
+       this._state.product = updated;
+        this._state.willBuy=false;
+       this._callSubcriber(this._state.product,this._state.willBuy)
     },
-    _productToWillBuyCount(el) {
+    _productToWillBuyCount(el,index) {
+        el.inCart=true;
+        this._state.product=Object.values({
+            ...this._state.product,
+            [index]:el
+        });
+        console.log(this._state.product)
+       // let productToWillBuyCount =[];
+       // const updateElement = [...this.state.productToWillBuyCount];
+        this._state.willBuy=true;
         this._state.result.push(el);
-        this._state.willBuy = true;
+        //console.log(this._state.result.push(el));
         this._callSubcriber(this._state.product);
-   
+        //const ListNameProd = this.renderProduct(updateElement);
+        //const ListPriceProd = this.calculatePrice(updateElement);
+        //const allPrice = this.calcualteBasketPrice(ListPriceProd);
         
     },
-    _removeElementFromBuy (el){
+    _removeElementFromBuy (el,index) {
+        el.inCart=false;
     const updataNewList = this._state.result.filter(function (item) {
         return item.id !== el.id;
-        
     });
-        this._state.result = updataNewList;
-        this._callSubcriber(this._state.result)
-        
-   },
-    
+        this._state.product=Object.values({
+            ...this._state.product,
+            [index]:el
+        });
+    this._state.result = updataNewList;
+    this._state.willBuy= true;
+    this._callSubcriber(this._state.result)
+},
     dispatch(action) { // type: 'REMOVE-ELEMENT'
+        console.log(action)
       if(action.type === REMOVE_ELEMENT){
         this._removeElement(action);
       }
        else if (action.type === TO_WILL_BUY) {
-          this._productToWillBuyCount(action)
+          this._productToWillBuyCount(action.product,action.index)
        }
-       else if (action.type === REMOVE_TO_WILL_BUY) {
-          this._removeElementFromBuy(action)
-       }
+      else if (action.type === REMOVE_TO_WILL_BUY){
+          this._removeElementFromBuy(action.product,action.index)
+      }
     }
+
 }
 
 
