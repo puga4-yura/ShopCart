@@ -5664,54 +5664,13 @@ let store  = {
     subscribe (observer) {
         this._callSubcriber = observer;
     },
-    // _removeElement (el) {
-    //     const updated = this._state.product.filter(function (item) {
-    //     return item.id !== el.id;
-    // });
-    //    this._state.product = updated;
-    //     this._state.willBuy=false;
-    //    this._callSubcriber(this._state.product,this._state.willBuy)
-    // },
-//     _productToWillBuyCount(el,index) {
-//         el.inCart=true;
-//         this._state.product=Object.values({
-//             ...this._state.product,
-//             [index]:el
-//         });
-//         this._state.result.push(el);
-//         this._callSubcriber(this._state.product);
-//     },
-//     _removeElementFromBuy (el,index) {
-//         el.inCart=false;
-//     const updataNewList = this._state.result.filter(function (item) {
-//         return item.id !== el.id;
-//     });
-//         this._state.product=Object.values({
-//             ...this._state.product,
-//             [index]:el
-//         });
-//     this._state.result = updataNewList;
-//     this._state.willBuy= true;
-//     this._callSubcriber(this._state.result)
-// },
-    dispatch(action) { // type: 'REMOVE-ELEMENT'
-      // if(action.type === REMOVE_ELEMENT){
-      //   this._removeElement(action);
-      // }
-      //  else if (action.type === TO_WILL_BUY) {
-      //     this._productToWillBuyCount(action.product,action.index)
-      //  }
-      // else if (action.type === REMOVE_TO_WILL_BUY){
-      //     this._removeElementFromBuy(action.product,action.index)
-      // }
-
+    dispatch(action) { // type:
         this._state.product = productReducer(this._state.product, action);
-        //this._state.result = resultReducer(this._state.product, action);
+        this._state.result = resultReducer(this._state.result, action);
 
         this._callSubcriber(this._state);
     }
-
-}
+};
 
 
 export default store;
