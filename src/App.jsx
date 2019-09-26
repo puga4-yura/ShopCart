@@ -7,8 +7,6 @@ import Footer from "./components/Footer/Footer";
 import {BrowserRouter, Route} from "react-router-dom";
 
 const App = (props) => {
-  //console.log(props.removeElement)
-  debugger
     return (
       <BrowserRouter>
         <div className="body">

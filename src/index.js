@@ -8,7 +8,6 @@ import store from "./store/redux-store"
 //import {_callSubcriber} from "./render";
 
 export let rerenderEntireTree = (state) => {
-  debugger
   ReactDOM.render(
     <App state={store.getState()} dispatch={store.dispatch.bind(store)} />,
     document.getElementById('root'));

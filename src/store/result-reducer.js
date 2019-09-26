@@ -8,7 +8,7 @@ const REMOVE_TO_WILL_BUY = 'REMOVE_TO_WILL_BUY';
 // });
 // export const removeToWillBuyCount = () => ({type: REMOVE_TO_WILL_BUY});
 
-let initialState = {};
+let initialState = [];
 
 let addToCart = (state, el) => {
     state.push(el.product);
