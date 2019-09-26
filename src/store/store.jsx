@@ -5664,7 +5664,7 @@ let store  = {
     subscribe (observer) {
         this._callSubcriber = observer;
     },
-    dispatch(action) { // type:
+    dispatch(action) { // type
         this._state.product = productReducer(this._state.product, action);
         this._state.result = resultReducer(this._state.result, action);
 

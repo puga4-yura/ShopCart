@@ -8,7 +8,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 
 const App = (props) => {
   //console.log(props.removeElement)
-  //debugger
+  debugger
     return (
       <BrowserRouter>
         <div className="body">

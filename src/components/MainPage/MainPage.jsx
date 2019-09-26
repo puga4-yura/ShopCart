@@ -5,13 +5,11 @@ import ResultCart from "./ChooseProduct/ChooseProduct";
 import s from "./MainPage.module.css"
 
 const MainPage = (props) => {
+  debugger;
   let ProductInfo = props.state.product.map((productInfo,index) =>
-    <Product   title={productInfo.title}
-               willBuy={props.state.willBuy}
-               product={productInfo}
+    <Product   product={productInfo[index]}
                index={index}
-               dispatch={props.dispatch}
-               img={productInfo.image_main}/>)
+               dispatch={props.dispatch}/>)
   return (
     <div className={s.container}>
       <div>
