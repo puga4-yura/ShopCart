@@ -6,7 +6,8 @@ const REMOVE_TO_WILL_BUY = 'REMOVE_TO_WILL_BUY';
 
 //export const removeElementActionCreate = (product) => ({type: REMOVE_ELEMENT, id: product.id});
 
-let initialState = [
+let initialState={
+  product: [
     {
       "id": 89859632,
       "title": "Сандалии Skechers 51873 NVY 46 (12) 30 см (192283106071)",
@@ -5646,8 +5647,8 @@ let initialState = [
         }
       }
     }
-  ];
-
+  ]
+}
 let  removeElement = (store, el) => {
        return store.filter(function (item) {
        return item.id !== el.id;

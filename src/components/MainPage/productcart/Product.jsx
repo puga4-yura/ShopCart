@@ -2,21 +2,27 @@ import React from 'react'
 import s from "./Product.module.css"
 
 const Product = (props) => {
+  //debugger;
+  //console.log(props);
   const product = props.product;
-  let removeEl = () => {
-    const action = {type: 'REMOVE-ELEMENT', product: product};
-    props.dispatch(action);
-  }
   
-  let addToCard = () => {
-    const action = {type: 'TO_WILL_BUY', product, index:props.index};
-    props.dispatch(action);
+  let removeEl = () => {
+      props.removeEl();
+    //const action = {type: 'REMOVE-ELEMENT', product: product};
+    //props.dispatch(action);
   }
-
-    let removeFromCard = () => {
-        const action = {type: 'REMOVE_TO_WILL_BUY', product, index:props.index};
-        props.dispatch(action);
-    }
+  //
+  // let addToCard = () => {
+  //   props.addToCard();
+  //   //const action = {type: 'TO_WILL_BUY', product, index:props.index};
+  //   //props.dispatch(action);
+  // }
+  //
+  //   let removeFromCard = () => {
+  //     props.addToCard();
+  //       //const action = {type: 'REMOVE_TO_WILL_BUY', product, index:props.index};
+  //       //props.dispatch(action);
+  //   }
   
   
   return (
@@ -35,3 +41,4 @@ const Product = (props) => {
   )
 }
 export default Product;
+
