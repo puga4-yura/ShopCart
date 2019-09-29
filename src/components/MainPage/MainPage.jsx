@@ -1,8 +1,9 @@
 import React from 'react'
 import ProductContainer from "./productcart/ProductContainer";
 import Pagination from "./Pagination/Pagination";
-import ResultCart from "./ChooseProduct/ChooseProduct";
+//import ResultCartContainer from "";
 import s from "./MainPage.module.css"
+import ResultCartContainer from "./ChooseProduct/ChoseProductContainer";
 
 const MainPage = (props) => {
   let ProductInfo = props.state.product.map((productInfo,index) =>
@@ -16,7 +17,7 @@ const MainPage = (props) => {
           {ProductInfo}
         </div>
       </div>
-      <ResultCart store={props.state}/>
+      <ResultCartContainer store={props.state}/>
     </div>
   )
 }
