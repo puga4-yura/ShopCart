@@ -9,11 +9,11 @@ const Product = (props) => {
   }
 
   let addToCard = () => {
-   props.addToCard(props);
+   props.addToCard();
   }
 
   let removeFromCard = () => {
-     props.removeFromCard(props);
+     props.removeFromCard();
   }
   
   

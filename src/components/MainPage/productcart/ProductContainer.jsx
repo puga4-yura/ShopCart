@@ -28,11 +28,16 @@ import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps";
 
 function ProductInfo(props) {
   console.log(props)
-    return props.product.map((productInfo,index) =>
-        <Product     product={productInfo}
-                              index={index}
-                     removeEl={props.removeEl}
-                              dispatch={props.dispatch}/>);
+    return props.product.map((productInfo,index) => {
+        const addToCard = () => props.addToCard({product:productInfo,index});
+        const removeFromCard = () => props.removeFromCard({product:productInfo,index});
+      return <Product product={productInfo}
+               index={index}
+               removeEl={props.removeEl}
+                      addToCard={addToCard}
+                      removeFromCard={removeFromCard}
+               dispatch={props.dispatch}/>;
+    });
     
 }
 
@@ -45,17 +50,18 @@ let f1 = (state) => {
 let f2 = (dispatch, state) => {
   return {
     removeEl: (data) => {
+      console.log(data)
       let action = {type: 'REMOVE-ELEMENT', product: data.product};
       dispatch(action);
     },
 
-    addToCard:() => {
-      const action = {type: 'TO_WILL_BUY', product: state.product};
+    addToCard:(data) => {
+      const action = {type: 'TO_WILL_BUY', product: data.product,index:data.index};
       dispatch(action);
     },
 
-    removeFromCard:() => {
-      const action = {type: 'REMOVE_TO_WILL_BUY',product: state.product};
+    removeFromCard:(data) => {
+      const action = {type: 'REMOVE_TO_WILL_BUY',product: data.product,index:data.index};
       dispatch(action);
     }
   }
