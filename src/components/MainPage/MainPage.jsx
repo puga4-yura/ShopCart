@@ -10,7 +10,7 @@ const MainPage = (props) => {
     <div className={s.container}>
       <div>
         <div className="product-list">
-          <ProductContainer></ProductContainer>
+          <ProductContainer />
         </div>
       </div>
       {/*<ResultCartContainer store={props.state}/>*/}

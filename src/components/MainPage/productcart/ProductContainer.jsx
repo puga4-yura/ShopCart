@@ -1,8 +1,8 @@
 import React from 'react'
 import Product from "./Product"
 import {connect} from "react-redux";
-import mapStateToProps from "react-redux/es/connect/mapStateToProps";
-import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps";
+//import mapStateToProps from "react-redux/es/connect/mapStateToProps";
+//import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps";
 // import actionCreate removeElementActionCreate
 
 // const ProductContainer = (props) => {
@@ -27,47 +27,45 @@ import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps";
 // }
 
 function ProductInfo(props) {
-  console.log(props)
+    console.log(props)
     return props.product.map((productInfo,index) => {
-        const addToCard = () => props.addToCard({product:productInfo,index});
-        const removeFromCard = () => props.removeFromCard({product:productInfo,index});
+      const addToCard = () => props.addToCard({product:productInfo,index});
+      const removeFromCard = () => props.removeFromCard({product:productInfo,index});
       return <Product product={productInfo}
-               index={index}
-               removeEl={props.removeEl}
+                      index={index}
+                      removeEl={props.removeEl}
                       addToCard={addToCard}
                       removeFromCard={removeFromCard}
-               dispatch={props.dispatch}/>;
+                      dispatch={props.dispatch}/>;
     });
     
 }
 
-let f1 = (state) => {
+let mapStateToProps = (state) => {
   return {
       product: state.product
   }
 };
 
-let f2 = (dispatch, state) => {
+let mapDispatchTooProps = (dispatch) => {
   return {
     removeEl: (data) => {
-      console.log(data)
+      //console.log(data)
       let action = {type: 'REMOVE-ELEMENT', product: data.product};
       dispatch(action);
     },
 
     addToCard:(data) => {
-      const action = {type: 'TO_WILL_BUY', product: data.product,index:data.index};
+      const action = {type: 'TO_WILL_BUY', product: data.product, index:data.index};
       dispatch(action);
     },
 
     removeFromCard:(data) => {
-      const action = {type: 'REMOVE_TO_WILL_BUY',product: data.product,index:data.index};
+      const action = {type: 'REMOVE_TO_WILL_BUY',product: data.product, index:data.index};
       dispatch(action);
     }
   }
 };
 
 
-
-
-export default connect(f1,f2)(ProductInfo);
+export default connect(mapStateToProps, mapDispatchTooProps)(ProductInfo);
