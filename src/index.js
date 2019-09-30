@@ -5,15 +5,18 @@ import App from './App.jsx';
 import * as serviceWorker from './serviceWorker';
 //import store from "./store/store"
 import store from "./store/redux-store"
+import {Provider} from "react-redux";
 //import {_callSubcriber} from "./render";
 
 export let rerenderEntireTree = (state) => {
   ReactDOM.render(
-    <App state={store.getState()} dispatch={store.dispatch.bind(store)} />,
+    <Provider store={store}>
+      <App  />
+    </Provider>,
     document.getElementById('root'));
 }
 
-//removeElement={store.removeElement}
+//state={store.getState()} dispatch={store.dispatch.bind(store)}
 rerenderEntireTree(store.getState());
 
 store.subscribe(() => {
