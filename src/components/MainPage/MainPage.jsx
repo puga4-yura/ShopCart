@@ -6,18 +6,14 @@ import s from "./MainPage.module.css"
 import ResultCartContainer from "./ChooseProduct/ChoseProductContainer";
 
 const MainPage = (props) => {
-  let ProductInfo = props.state.product.map((productInfo,index) =>
-    <ProductContainer     product={productInfo}
-                         index={index}
-                         dispatch={props.dispatch}/>)
   return (
     <div className={s.container}>
       <div>
         <div className="product-list">
-          {ProductInfo}
+          <ProductContainer></ProductContainer>
         </div>
       </div>
-      <ResultCartContainer store={props.state}/>
+      {/*<ResultCartContainer store={props.state}/>*/}
     </div>
   )
 }

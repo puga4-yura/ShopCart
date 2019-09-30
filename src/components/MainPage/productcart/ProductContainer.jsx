@@ -26,9 +26,15 @@ import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps";
 //   return ( <Product removeEl={removeEl} addToCard={addToCard}  removeFromCard={removeFromCard} product={props.product} />)
 // }
 
-let ProductInfo = state.product.map((productInfo,index)=>
-  <Product    product={productInfo}
-              index={index}/>)
+function ProductInfo(props) {
+  console.log(props)
+    return props.product.map((productInfo,index) =>
+        <Product     product={productInfo}
+                              index={index}
+                     removeEl={props.removeEl}
+                              dispatch={props.dispatch}/>);
+    
+}
 
 let f1 = (state) => {
   return {
@@ -38,9 +44,10 @@ let f1 = (state) => {
 
 let f2 = (dispatch, state) => {
   return {
-    removeEl: () => {
-      let action = {type: 'REMOVE-ELEMENT', product: state.product};
-      dispatch(action);
+    removeEl: (state) => {
+      console.log(state,dispatch)
+      // let action = {type: 'REMOVE-ELEMENT', product: state.product};
+      // dispatch(action);
     },
 
     addToCard:() => {
@@ -55,8 +62,7 @@ let f2 = (dispatch, state) => {
   }
 };
 
-let ProductContainer = connect(f1, f2)(ProductInfo);
 
 
 
-export default ProductContainer;
+export default connect(f1,f2)(ProductInfo);
