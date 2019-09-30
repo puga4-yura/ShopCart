@@ -44,10 +44,9 @@ let f1 = (state) => {
 
 let f2 = (dispatch, state) => {
   return {
-    removeEl: (state) => {
-      console.log(state,dispatch)
-      // let action = {type: 'REMOVE-ELEMENT', product: state.product};
-      // dispatch(action);
+    removeEl: (data) => {
+      let action = {type: 'REMOVE-ELEMENT', product: data.product};
+      dispatch(action);
     },
 
     addToCard:() => {

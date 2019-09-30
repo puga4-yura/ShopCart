@@ -5,15 +5,15 @@ const Product = (props) => {
   const product = props.product;
   
   let removeEl = () => {
-     props.removeEl();
+     props.removeEl(props);
   }
 
   let addToCard = () => {
-   props.addToCard();
+   props.addToCard(props);
   }
 
   let removeFromCard = () => {
-     props.removeFromCard();
+     props.removeFromCard(props);
   }
   
   
