@@ -26,17 +26,16 @@ import {connect} from "react-redux";
 //   return ( <Product removeEl={removeEl} addToCard={addToCard}  removeFromCard={removeFromCard} product={props.product} />)
 // }
 
-function ProductInfo(props) {
-    console.log(props)
-    return props.product.map((productInfo,index) => {
-      const addToCard = () => props.addToCard({product:productInfo,index});
-      const removeFromCard = () => props.removeFromCard({product:productInfo,index});
+function ProductInfo(state) {
+    return state.product.map((productInfo,index) => {
+      const addToCard = () => state.addToCard({product:productInfo,index});
+      const removeFromCard = () => state.removeFromCard({product:productInfo,index});
       return <Product product={productInfo}
                       index={index}
-                      removeEl={props.removeEl}
+                      removeEl={state.removeEl}
                       addToCard={addToCard}
                       removeFromCard={removeFromCard}
-                      dispatch={props.dispatch}/>;
+                      dispatch={state.dispatch}/>;
     });
     
 }

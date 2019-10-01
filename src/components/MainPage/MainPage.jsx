@@ -1,19 +1,19 @@
 import React from 'react'
-import ProductContainer from "./productcart/ProductContainer";
+import ProductInfo from "./productcart/ProductContainer";
 import Pagination from "./Pagination/Pagination";
 //import ResultCartContainer from "";
 import s from "./MainPage.module.css"
 import ResultCartContainer from "./ChooseProduct/ChoseProductContainer";
 
-const MainPage = (props) => {
+const MainPage = () => {
   return (
     <div className={s.container}>
       <div>
         <div className="product-list">
-          <ProductContainer />
+          <ProductInfo />
         </div>
       </div>
-      {/*<ResultCartContainer store={props.state}/>*/}
+      <ResultCartContainer />
     </div>
   )
 }
