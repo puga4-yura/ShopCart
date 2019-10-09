@@ -5653,6 +5653,9 @@ app.use((req, res, next) => {
 // app.get('/drugs', (req, res) => res.json(treatments[_.random(0, treatments.length - 1)]));
 
 app.get('/data', function (req, res) {
+    // const page =req.query.page || 1;
+    // const resData = product.slice(page*2,page)
+    // console.log(1,req.query.page)
     res.json(product)
 });
 
