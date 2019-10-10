@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
 import NavBar from "./components/Navigation/SiteBar";
-import MainPage from "./components/MainPage/MainPage"
-import AddProduct from "./components/AddProduct/AddProduct"
+import MainPage from "./components/MainPage/MainPage";
+import UsersContainer from './components/Users/UsersContainer'
 import Footer from "./components/Footer/Footer";
+import AddProduct from "./components/AddProduct/AddProduct"
 import {BrowserRouter, Route} from "react-router-dom";
 
 const App = (props) => {
@@ -12,8 +13,8 @@ const App = (props) => {
         <div className="body">
           <NavBar/>
           <div className='mainContent'>
-           <Route path='/MainPage'  render={() => <MainPage state={props.state}
-                                                            dispatch={props.dispatch}/> }/>
+            <Route path='/MainPage'  render={() => <MainPage /> }/>
+            <Route path='/Users'  render={() => <UsersContainer /> }/>
             <Route path='/AddProduct' render={ () =><AddProduct/>}/>
           </div>
           <Footer/>

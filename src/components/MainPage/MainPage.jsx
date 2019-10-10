@@ -1,9 +1,9 @@
 import React from 'react'
-import ProductInfo from "./productcart/ProductContainer";
-import Pagination from "./Pagination/Pagination";
+import ProductInfo from "../Productcart/ProductContainer";
+import Pagination from "../Pagination/Pagination";
 //import ResultCartContainer from "";
 import s from "./MainPage.module.css"
-import ResultCartContainer from "./ChooseProduct/ChoseProductContainer";
+import ResultCartContainer from "../ChooseProduct/ChoseProductContainer";
 
 const MainPage = () => {
   return (
