@@ -22,7 +22,6 @@ const resultReducer = (state   =  initialState, action) => {
     } else if (action.type === REMOVE_TO_WILL_BUY) {
         state = removeFromCart(state, action)
     }
-    //console.log(state);
     return state;
 }
 

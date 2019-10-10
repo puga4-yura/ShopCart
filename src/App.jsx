@@ -24,7 +24,6 @@ const App = (props) => {
       </BrowserRouter>
     )
 };
-//removeElement={props.removeElement}
 export default App;
 
 
