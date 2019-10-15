@@ -5694,7 +5694,7 @@ app.use((req, res, next) => {
 //     res.json(product)
 // });
 
-app.get('/data', function (req, res) {
+app.get('/users', function (req, res) {
     // const page =req.query.page || 1;
     // const resData = product.slice(page*2,page)
     // console.log(1,req.query.page)
