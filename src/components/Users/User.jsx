@@ -1,18 +1,21 @@
 import React from 'react';
 import s from './User.module.css';
 import * as axiox from 'axios';
+import preloader from './../../../src/assets/images/preloader.gif'
 
 class Users extends React.Component {
   componentDidMount() {
     axiox.get("http://localhost:7200/users").then(response => {
-      debugger
-      this.props.setUsers(response.users)
+      // почему в дебаге data а не users
+      this.props.setUsers(response.data)
     })
   }
   
   render() {
-    //debugger
-    return <div>
+    debugger
+    return <>
+      {this.props.isFetching ? <img className={s.preloader} srs={preloader}/> : null}
+      <div>
         {
           this.props.users.map((u) => <div>
               <div>
@@ -36,7 +39,7 @@ class Users extends React.Component {
             </div>
           )
         }
-      </div>
+      </div></>
       
   }
 }

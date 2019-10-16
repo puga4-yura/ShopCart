@@ -6,7 +6,9 @@ import {followAC, setUsersAc, unfollowAC} from "../../store/user-reducer";
 
 let mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users
+    users: state.usersPage.users,
+    isFetching: state.usersPage.isFetching
+    
   }
 };
 
