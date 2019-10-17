@@ -5654,7 +5654,7 @@ const users= [
     },
     {
         id: 2,
-        photoUrl: 'https://klike.net/uploads/posts/2019-06/1560149830_4.jpg',
+        photoUrl: '',
         followed: true,
         fullName: 'Dima',
         status: 'I am a boss',
@@ -5675,7 +5675,31 @@ const users= [
         fullName: 'Ann',
         status: 'I am a boss',
         location: {city:'Lubny', country: 'UK'}
-        }
+    },
+    {
+        id: 5,
+        photoUrl: 'https://klike.net/uploads/posts/2019-06/1560149830_4.jpg',
+        followed: false,
+        fullName: 'Ann',
+        status: 'I am a boss',
+        location: {city:'Lubny', country: 'UK'}
+    },
+    {
+        id: 6,
+        photoUrl: 'https://icdn.lenta.ru/images/2018/07/24/19/20180724195031816/pic_015fb553ca8f4e4a44bba68560f34e47.jpg',
+        followed: false,
+        fullName: 'Ann',
+        status: 'I am a boss',
+        location: {city:'Lubny', country: 'UK'}
+    },
+    {
+        id: 7,
+        photoUrl: 'https://icdn.lenta.ru/images/2018/07/24/19/20180724195031816/pic_015fb553ca8f4e4a44bba68560f34e47.jpg',
+        followed: false,
+        fullName: 'Ann',
+        status: 'I am a boss',
+        location: {city:'Lubny', country: 'UK'}
+    }
 ];
 
 app.use((req, res, next) => {

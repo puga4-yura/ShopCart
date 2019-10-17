@@ -15,6 +15,7 @@
 .mainContent {
   grid-area: m;
   background: rgba(115, 119, 136, 0.67);
+  position: relative;
 }
 
 .mainContainer {

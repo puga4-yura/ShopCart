@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux";
 import Users from "./User"
-import {followAC, setUsersAc, unfollowAC} from "../../store/user-reducer";
+import {followAC, setUsersAc, unfollowAC, setIsFetching} from "../../store/user-reducer";
 
 
 let mapStateToProps = (state) => {
@@ -23,6 +23,9 @@ let mapDispatchToProps =(dispatch) => {
     
     setUsers: (users) => {
       dispatch(setUsersAc(users))
+  },
+    setFetching: (isFetching) => {
+      dispatch(setIsFetching (isFetching))
   }
   }
 }
