@@ -18,8 +18,9 @@ const Product = (props) => {
   
   
   return (
+
     <div className={s.containerProduct}>
-      <img src={product.img} alt="photo"/>
+      <img src={product.image_main} alt="photo"/>
       <div>{product.title}</div>
       <div>
           {!props.product.inCart ?
