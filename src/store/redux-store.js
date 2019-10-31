@@ -8,7 +8,10 @@ let redusers = combineReducers({
   result: resultReducer,
   usersPage: userReducer
 });
-
+console.log(redusers)
 let store  = createStore(redusers);
+console.log(store)
 
 export default store;
+
+window.store = store;

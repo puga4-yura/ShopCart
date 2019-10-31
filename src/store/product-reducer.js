@@ -3,6 +3,7 @@ import React from "react";
 const REMOVE_ELEMENT = 'REMOVE-ELEMENT';
 const TO_WILL_BUY = 'TO_WILL_BUY';
 const REMOVE_TO_WILL_BUY = 'REMOVE_TO_WILL_BUY';
+let CHANGE_ = "ADD_NEW_PRODUCT";
 let ADD_NEW_PRODUCT = "ADD_NEW_PRODUCT";
 
 //export const removeElementActionCreate = (product) => ({type: REMOVE_ELEMENT, id: product.id});

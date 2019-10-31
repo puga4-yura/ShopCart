@@ -6,18 +6,16 @@ import people from '../../assets/images/people.png'
 
 
 class Users extends React.Component {
-  componentDidMount() {
-    this.props.setFetching(true)
-    axiox.get("http://localhost:7200/users").then(response => {
-      // почему в дебаге data а не users
-      this.props.setFetching(false)
-      this.props.setUsers(response.data)
-     
-    })
-  }
+  // componentDidMount() {
+  //   this.props.setFetching(true)
+  //   axiox.get("http://localhost:7200/users").then(response => {
+  //     this.props.setFetching(false)
+  //     this.props.setUsers(response.data)
+  //
+  //   })
+  // }
   
   render() {
-    //debugger
     return <>
       {this.props.isFetching ? <Preloader/> : null}
       <div>

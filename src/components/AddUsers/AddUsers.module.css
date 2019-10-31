@@ -1,0 +1,25 @@
+.container {
+
+}
+.addBtn {
+    background: #19b1fb;
+    color: #ffffff;
+    padding: 10px 25px;
+}
+
+.wrap {
+    display: flex;
+    justify-content: space-between;
+}
+.title {
+    color: #282c34;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    margin-top: 10px;
+}
+
+input {
+    padding: 10px 20px;
+    min-width: 300px;
+}

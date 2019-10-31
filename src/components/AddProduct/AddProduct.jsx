@@ -6,13 +6,16 @@ const AddProduct = () => {
   let priceProduct = React.createRef();
   let descriptionProduct = React.createRef();
 
-  let textNameChange = () => {
+  let textNameChange = (nameProduct) => {
     //debugger
     let text = nameProduct.current.value;
     //props.changeText(text)
     console.log(text)
   };
-
+  
+  //textNameChange(nameProduct);
+  //textNameChange(priceProduct);
+  //textNameChange(descriptionProduct);
   // let textNameChange = () => {
   //   debugger
   //   let text = nameProduct.current.value;
