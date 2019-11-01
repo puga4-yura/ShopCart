@@ -3,45 +3,29 @@ import s from './AddUsers.module.css'
 import {addTextAC} from "../../store/user-reducer";
 
 const AddUsers = (props) => {
-  console.log(props)
   let nameProduct = React.createRef();
+  
+  let info = {
+    name: '',
+    country: '',
+    state: ''
+  };
+  
   //let priceProduct = React.createRef();
   //let descriptionProduct = React.createRef();
 
-  // let textNameChange = () => {
-  //   //debugger
-  //   let text = nameProduct.current.value
-  //
-  //   console.log(text)
-  // };
+  let fieldChange = (event) => {
+    debugger
+    info[event.target.name] = event.target.value
+  };
   
   let addNewUser = () => {
     debugger
     let text = nameProduct.current.value;
-  
     props.changeText(text)
     return text
-    //addPost(text);
-   // props.changeText('');
-    
   }
-  
-  //textNameChange(nameProduct);
-  //textNameChange(priceProduct);
-  //textNameChange(descriptionProduct);
-  // let textNameChange = () => {
-  //   debugger
-  //   let text = nameProduct.current.value;
-  //   //props.changeText(text)
-  //   console.log(text)
-  // };
-  //
-  // let textNameChange = () => {
-  //   debugger
-  //   let text = nameProduct.current.value;
-  //   //props.changeText(text)
-  //   console.log(text)
-  // }
+
 
   return (
    <div className={s.container}>
@@ -55,15 +39,15 @@ const AddUsers = (props) => {
 
      <div>
        <div className={s.title}>Имя</div>
-       <input type="text" placeholder="Имя"  ref={nameProduct}/>
+       <input type="text" placeholder="Имя" name='name' onChange={fieldChange} />
      </div>
      <div>
        <div className={s.title}>Страна</div>
-       <input type="text" placeholder="Страна" />
+       <input type="text" placeholder="Страна" name='country' onChange={fieldChange} />
      </div>
      <div>
        <div className={s.title}>Статус</div>
-       <input type="text" placeholder="Статус" />
+       <input type="text" placeholder="Статус" name='state' onChange={fieldChange} />
      </div>
    </div>
   )

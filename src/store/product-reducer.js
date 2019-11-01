@@ -676,10 +676,6 @@ const productReducer = (store = initialState, action) => {
 
         };
 
-        case ADD_NEW_PRODUCT: {
-
-        }
-
         default :
             return store;
     }

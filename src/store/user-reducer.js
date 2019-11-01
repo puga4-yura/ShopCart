@@ -37,6 +37,9 @@ let initialState = {
     newUserInfo: ""
 };
 
+
+
+
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW:
@@ -66,17 +69,21 @@ const usersReducer = (state = initialState, action) => {
             return {...state, isFetching: action.isFetching}
 
         case ADD_INFORMATION_NEW_USERS: {
-            debugger
-            let newPost =  {id: 7, photoUrl: '', followed: false, fullName: action.textInfo, status: 'I am a boss', location: {city:'Minsk', country: 'Belarus'}}
+            debugger;
+            let maxid = 0;
+            state.users.forEach(function (current) {
+                    if (current.id > maxid) {
+                        maxid = current.id
+                    }
+                    return maxid +=1;
+                })
+            
+            let newPost =  {id: {maxid}, photoUrl: '', followed: false, fullName: action.textInfo, status: 'I am a boss', location: {city:'Minsk', country: 'Belarus'}}
+            
             return {...state, users: [...state.users, newPost]}
         }
-
-            
-        // case ADD_INFORMATION_NEW_USERS:
-        //     return {
-        //
-        //     }
-            
+        
+        
         default:
             return state;
     }
