@@ -5,7 +5,6 @@ import {follow, setUsers, unfollow, setFetching} from "../../store/user-reducer"
 
 
 let mapStateToProps = (state) => {
-  debugger
   return {
     users: state.usersPage.users,
     isFetching: state.usersPage.isFetching

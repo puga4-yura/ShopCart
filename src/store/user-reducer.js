@@ -14,7 +14,7 @@ let initialState = {
             followed: false,
             fullName: 'Ruslan',
             status: 'I am a boss',
-            location: {city:'Minsk', country: 'Belarus'}
+            location: {city: 'Minsk', country: 'Belarus'}
         },
         {
             id: 2,
@@ -22,7 +22,7 @@ let initialState = {
             followed: true,
             fullName: 'Dima',
             status: 'I am a boss',
-            location: {city:'Kiev', country: 'UK'}
+            location: {city: 'Kiev', country: 'UK'}
         },
         {
             id: 3,
@@ -30,14 +30,12 @@ let initialState = {
             followed: true,
             fullName: 'Ura',
             status: 'I am a boss',
-            location: {city:'Russian', country: 'Moscow'}
+            location: {city: 'Russian', country: 'Moscow'}
         },
     ],
     isFetching: false,
     newUserInfo: ""
 };
-
-
 
 
 const usersReducer = (state = initialState, action) => {
@@ -64,26 +62,35 @@ const usersReducer = (state = initialState, action) => {
             };
         case SET_USERS:
             return {...state, users: [...state.users, ...action.users]}
-            
+
         case TOGGLE_IS_FETCHING:
             return {...state, isFetching: action.isFetching}
 
         case ADD_INFORMATION_NEW_USERS: {
-            debugger;
+            //debugger;
             let maxid = 0;
             state.users.forEach(function (current) {
-                    if (current.id > maxid) {
-                        maxid = current.id
-                    }
-                    return maxid +=1;
-                })
-            
-            let newPost =  {id: {maxid}, photoUrl: '', followed: false, fullName: action.textInfo, status: 'I am a boss', location: {city:'Minsk', country: 'Belarus'}}
-            
+                if (current.id > maxid) {
+                    maxid = current.id
+                }
+                return maxid += 1;
+            })
+            console.log(maxid)
+
+            let newPost = {
+                id: {maxid},
+                photoUrl: '',
+                followed: false,
+                fullName: action.textInfo.name,
+                status: action.textInfo.state,
+                location: {city: 'Minsk', country: action.textInfo.country}
+            }
+            //let testPost={...action.textInfo,id:maxid}
+            //console.log(testPost)
             return {...state, users: [...state.users, newPost]}
         }
-        
-        
+
+
         default:
             return state;
     }

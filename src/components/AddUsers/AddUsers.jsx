@@ -5,8 +5,9 @@ import {addTextAC} from "../../store/user-reducer";
 const AddUsers = (props) => {
   let nameProduct = React.createRef();
   
-  let info = {
-    name: '',
+  let textInfo = {
+    id: null,
+    name: '2332',
     country: '',
     state: ''
   };
@@ -15,16 +16,14 @@ const AddUsers = (props) => {
   //let descriptionProduct = React.createRef();
 
   let fieldChange = (event) => {
-    debugger
-    info[event.target.name] = event.target.value
+    textInfo[event.target.name] = event.target.value
   };
   
   let addNewUser = () => {
-    debugger
-    let text = nameProduct.current.value;
-    props.changeText(text)
-    return text
-  }
+      console.log(textInfo)
+     props.changeText(textInfo)
+    // return text
+  };
 
 
   return (

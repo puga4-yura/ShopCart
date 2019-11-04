@@ -3,6 +3,8 @@ import s from './User.module.css';
 import * as axiox from 'axios';
 import Preloader from '../../common/preloader/preloader'
 import people from '../../assets/images/people.png'
+import AddUsersContainer from "../AddUsers/AddUsersContainer";
+import {NavLink} from "react-router-dom";
 
 
 class Users extends React.Component {
