@@ -1,7 +1,9 @@
 import React from 'react'
 import s from './AddUsers.module.css'
 import {addTextAC} from "../../store/user-reducer";
-
+import {
+    withRouter
+} from 'react-router-dom'
 const AddUsers = (props) => {
   let nameProduct = React.createRef();
   
@@ -22,6 +24,7 @@ const AddUsers = (props) => {
   let addNewUser = () => {
       console.log(textInfo)
      props.changeText(textInfo)
+      props.history.push('/users/');
     // return text
   };
 
@@ -52,4 +55,4 @@ const AddUsers = (props) => {
   )
 }
 
-export default AddUsers;
+export default withRouter(AddUsers);
