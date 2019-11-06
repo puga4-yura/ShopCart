@@ -1,21 +1,18 @@
 import React from 'react'
 import s from './AddUsers.module.css'
 import {addTextAC} from "../../store/user-reducer";
-import {
-    withRouter
-} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 const AddUsers = (props) => {
-  let nameProduct = React.createRef();
-  
+  debugger;
+  console.log(props)
   let textInfo = {
     id: null,
+    photo: '',
     name: '2332',
-    country: '',
-    state: ''
+    state: '',
+    country: ''
   };
   
-  //let priceProduct = React.createRef();
-  //let descriptionProduct = React.createRef();
 
   let fieldChange = (event) => {
     textInfo[event.target.name] = event.target.value
@@ -23,34 +20,36 @@ const AddUsers = (props) => {
   
   let addNewUser = () => {
       console.log(textInfo)
-     props.changeText(textInfo)
+      props.changeText(textInfo)
       props.history.push('/users/');
-    // return text
   };
 
 
   return (
    <div className={s.container}>
-     <div  className={s.wrap}>
-       <div className={s.title}>
-         <div>Выбирете картинку</div>
-         <input type="file"/>
+     <form action="">
+       <div  className={s.wrap}>
+         <div className={s.title}>
+           <div>Выбирете картинку</div>
+           <input name='photo' type="file"/>
+         </div>
+         <button onClick={addNewUser} className={s.addBtn}>Добавить новый новар</button>
        </div>
-       <button onClick={addNewUser} className={s.addBtn}>Добавить новый новар</button>
-     </div>
-
-     <div>
-       <div className={s.title}>Имя</div>
-       <input type="text" placeholder="Имя" name='name' onChange={fieldChange} />
-     </div>
-     <div>
-       <div className={s.title}>Страна</div>
-       <input type="text" placeholder="Страна" name='country' onChange={fieldChange} />
-     </div>
-     <div>
-       <div className={s.title}>Статус</div>
-       <input type="text" placeholder="Статус" name='state' onChange={fieldChange} />
-     </div>
+       <div>
+         <div className={s.title}>Имя</div>
+         <input type="text" placeholder="Имя" name='name' onChange={fieldChange} />
+       </div>
+       <div>
+         <div className={s.title}>Статус</div>
+         <input type="text" placeholder="Статус" name='state' onChange={fieldChange} />
+       </div>
+       <div>
+         <div className={s.title}>Страна</div>
+         <input type="text" placeholder="Страна" name='country' onChange={fieldChange} />
+       </div>
+       
+       
+     </form>
    </div>
   )
 }

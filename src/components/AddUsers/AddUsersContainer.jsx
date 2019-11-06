@@ -6,8 +6,9 @@ import {addTextAC} from "../../store/user-reducer";
 
 
 let mapStateToProps =(state) => {
+      debugger
       return {
-        newUserInfo: state
+        UserInfo: state.usersPage
       }
 };
 
