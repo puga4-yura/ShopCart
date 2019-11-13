@@ -36,94 +36,124 @@ let initialState = {
     isFetching: false,
     newUserInfo: "",
     cities: [
-        {
-            "1": {
-                "country": 1,
-                "name": "Ukraine"
-            },
-            "2": {
-                "country": 3,
-                "name": "Paris"
-            },
-            "3": {
-                "country": 4,
-                "name": "Madrid"
-            },
-            "4": {
-                "country": 6,
-                "name": "Houston"
-            },
-            "5": {
-                "country": 7,
-                "name": "Montreal"
-            },
-            "6": {
-                "country": 8,
-                "name": "Кишинев"
-            },
-            "7": {
-                "country": 9,
-                "name": "Minsk"
-            },
-            "8": {
-                "country": 10,
-                "name": "Warsaw"
-            },
-            "100": {
-                "country": 1,
-                "name": "Львов"
-            },
-            "101": {
-                "country": 1,
-                "name": "Николаев"
-            },
-            "103": {
-                "country": 1,
-                "name": "Переяслав-Хмельницкий"
-            },
-            "104": {
-                "country": 1,
-                "name": "Каменец-Подольский"
-            },
-            "105": {
-                "country": 1,
-                "name": "Donetsk"
-            },
-            "106": {
-                "country": 1,
-                "name": "Kharkov"
-            },
-            "107": {
-                "country": 1,
-                "name": "Луцк"
-            },
-            "108": {
-                "country": 1,
-                "name": "Poltava"
-            },
-            "109": {
-                "country": 1,
-                "name": "Черновцы"
-            },
-            "299": {
-                "country": 1,
-                "name": "Чернигов"
-            }
-        }
+            {country: 3, name: "Paris"},
+            {country: 4, name: "Madrid"},
+            {country: 6, name: "Houston"},
+            {country: 7, name: "Montreal"},
+            {country: 8, name: "Кишинев"},
+            {country: 9, name: "Minsk"},
+            {country: 10,name: "Warsaw"},
+            {country: 1, name: "Львов"},
+            {country: 1, name: "Николаев"},
+            {country: 1, name: "Переяслав-Хмельницкий"},
+            {country: 1, name: "Каменец-Подольский"},
+            {country: 1, name: "Donetsk"},
+            {country: 1, name: "Kharkov"},
+            {country: 1, name: "Луцк"},
+            {country: 1, name: "Poltava"},
+            {country: 1, name: "Черновцы"},
+            {country: 1, name: "Чернигов"}
 
+        // {
+        //     "1": {
+        //         "country": 1,
+        //         "name": "Ukraine"
+        //     },
+        //     "2": {
+        //         "country": 3,
+        //         "name": "Paris"
+        //     },
+        //     "3": {
+        //         "country": 4,
+        //         "name": "Madrid"
+        //     },
+        //     "4": {
+        //         "country": 6,
+        //         "name": "Houston"
+        //     },
+        //     "5": {
+        //         "country": 7,
+        //         "name": "Montreal"
+        //     },
+        //     "6": {
+        //         "country": 8,
+        //         "name": "Кишинев"
+        //     },
+        //     "7": {
+        //         "country": 9,
+        //         "name": "Minsk"
+        //     },
+        //     "8": {
+        //         "country": 10,
+        //         "name": "Warsaw"
+        //     },
+        //     "100": {
+        //         "country": 1,
+        //         "name": "Львов"
+        //     },
+        //     "101": {
+        //         "country": 1,
+        //         "name": "Николаев"
+        //     },
+        //     "103": {
+        //         "country": 1,
+        //         "name": "Переяслав-Хмельницкий"
+        //     },
+        //     "104": {
+        //         "country": 1,
+        //         "name": "Каменец-Подольский"
+        //     },
+        //     "105": {
+        //         "country": 1,
+        //         "name": "Donetsk"
+        //     },
+        //     "106": {
+        //         "country": 1,
+        //         "name": "Kharkov"
+        //     },
+        //     "107": {
+        //         "country": 1,
+        //         "name": "Луцк"
+        //     },
+        //     "108": {
+        //         "country": 1,
+        //         "name": "Poltava"
+        //     },
+        //     "109": {
+        //         "country": 1,
+        //         "name": "Черновцы"
+        //     },
+        //     "299": {
+        //         "country": 1,
+        //         "name": "Чернигов"
+        //     }
+        // }
     ],
-    countries: [{
-        "1": "Ukraine",
-        "2": "Germany",
-        "3": "France",
-        "4": "Spain",
-        "5": "Sweden",
-        "6": "USA",
-        "7": "Canada",
-        "8": "Moldova",
-        "9": "Belarus",
-        "10": "Poland"
-    }]
+    countries: [
+        {id: 1, country:"Ukraine"},
+        {id: 2, country:"Germany"},
+        {id: 3, country:"France"},
+        {id: 4, country:"Spain"},
+        {id: 5, country:"Sweden"},
+        {id: 6, country: "USA"},
+        {id: 7, country: "Canada"},
+        {id: 8, country:"Moldova"},
+        {id: 9, country:"Belarus"},
+        {id: 10, country:"Poland"}
+
+    //     {
+    //     "1": "Ukraine",
+    //     "2": "Germany",
+    //     "3": "France",
+    //     "4": "Spain",
+    //     "5": "Sweden",
+    //     "6": "USA",
+    //     "7": "Canada",
+    //     "8": "Moldova",
+    //     "9": "Belarus",
+    //     "10": "Poland"
+    // }
+    ]
 };
 
 
@@ -156,6 +186,7 @@ const usersReducer = (state = initialState, action) => {
             return {...state, isFetching: action.isFetching}
 
         case ADD_INFORMATION_NEW_USERS: {
+            debugger
             let maxid = 0;
             state.users.forEach(function (current) {
                 if (current.id > maxid) {
@@ -171,7 +202,7 @@ const usersReducer = (state = initialState, action) => {
                 followed: false,
                 fullName: action.textInfo.name,
                 status: action.textInfo.state,
-                location: {city: 'Minsk', country: action.textInfo.country}
+                location: {country: action.textInfo.country, city: action.textInfo.city}
             }
      
             return {...state, users: [newPost, ...state.users]}

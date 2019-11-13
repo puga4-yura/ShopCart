@@ -3,28 +3,31 @@ import s from './AddUsers.module.css'
 import {addTextAC} from "../../store/user-reducer";
 import {withRouter} from 'react-router-dom'
 const AddUsers = (props) => {
-  debugger;
-  console.log(props)
+ debugger
   let textInfo = {
     id: null,
     photo: '',
-    name: '2332',
+    name: '',
     state: '',
-    country: ''
+    country: '',
+    city: '',
   };
-  
+console.log(textInfo)
 
   let fieldChange = (event) => {
-    textInfo[event.target.name] = event.target.value
+    textInfo[event.target.name] = event.target.value;
+    let id = event.target.getElementById;
+    console.log(id)
   };
-  
+
   let addNewUser = () => {
-      console.log(textInfo)
       props.changeText(textInfo)
       props.history.push('/users/');
   };
 
-
+  // componentDidUpdate(props){
+  //   console.log(props.state)
+  // }
   return (
    <div className={s.container}>
      <form action="">
@@ -45,13 +48,28 @@ const AddUsers = (props) => {
        </div>
        <div>
          <div className={s.title}>Страна</div>
-         <input type="text" placeholder="Страна" name='country' onChange={fieldChange} />
+         <select  className={s.select} name="country" id="" onChange={fieldChange}>
+           /*Object.keys(countries).map*/
+           {props.UserInfo.countries.map((country) => {
+             console.log(country.id)
+             return <option id={country.id}>{country.country}</option>}
+           )}
+
+         </select>
        </div>
-       
-       
+       <div>
+         <div className={s.title}>Город</div>
+         <select className={s.select} name="city" id="" onChange={fieldChange}>
+           {props.UserInfo.cities.map((cities) => {
+             return <option>{cities.name}</option>
+           })}
+         </select>
+       </div>
      </form>
    </div>
   )
+
+
 }
 
 export default withRouter(AddUsers);
