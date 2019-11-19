@@ -19,6 +19,7 @@ class Users extends React.Component {
   // }
 
   render() {
+    console.log(this.props)
     return <>
       {this.props.isFetching ? <Preloader/> : null}
       <div>
@@ -39,8 +40,8 @@ class Users extends React.Component {
                 <div>{u.fullName}</div>
                 <div>{u.status}</div>
                 
-                <div>{u.location.country}</div>
-                <div>{u.location.city}</div>
+                <div>{this.props.countries[u.location.country]}</div>
+                <div>{this.props.cities[u.location.city].name}</div>
               </div>
             </div>
           )

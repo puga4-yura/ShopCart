@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from "react-redux";
-import AddUsers from "./AddUsers";
+import AddUsersClass from "./AddUsers";
 import {addTextAC} from "../../store/user-reducer";
 
 
@@ -20,4 +20,4 @@ let mapDispatchToProps =(dispatch) => {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddUsers)
+export default connect(mapStateToProps, mapDispatchToProps)(AddUsersClass)
