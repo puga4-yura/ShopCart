@@ -36,29 +36,8 @@ let initialState = {
     isFetching: false,
     newUserInfo: "",
     cities:
-            // {country: 3, name: "Paris"},
-            // {country: 4, name: "Madrid"},
-            // {country: 6, name: "Houston"},
-            // {country: 7, name: "Montreal"},
-            // {country: 8, name: "Кишинев"},
-            // {country: 9, name: "Minsk"},
-            // {country: 10,name: "Warsaw"},
-            // {country: 1, name: "Львов"},
-            // {country: 1, name: "Николаев"},
-            // {country: 1, name: "Переяслав-Хмельницкий"},
-            // {country: 1, name: "Каменец-Подольский"},
-            // {country: 1, name: "Donetsk"},
-            // {country: 1, name: "Kharkov"},
-            // {country: 1, name: "Луцк"},
-            // {country: 1, name: "Poltava"},
-            // {country: 1, name: "Черновцы"},
-            // {country: 1, name: "Чернигов"}
 
         {
-            "1": {
-                "country": 1,
-                "name": "Ukraine"
-            },
             "2": {
                 "country": 3,
                 "name": "Paris"
@@ -129,17 +108,6 @@ let initialState = {
             }
         },
     countries:
-        // {id: 1, country:"Ukraine"},
-        // {id: 2, country:"Germany"},
-        // {id: 3, country:"France"},
-        // {id: 4, country:"Spain"},
-        // {id: 5, country:"Sweden"},
-        // {id: 6, country: "USA"},
-        // {id: 7, country: "Canada"},
-        // {id: 8, country:"Moldova"},
-        // {id: 9, country:"Belarus"},
-        // {id: 10, country:"Poland"}
-
         {
         "1": "Ukraine",
         "2": "Germany",
@@ -215,8 +183,6 @@ export const follow = (usersId) => ({type: FOLLOW, usersId})
 export const unfollow = (usersId) => ({type: UNFOLLOW, usersId})
 export const setUsers = (users) => ({type: SET_USERS, users})
 export const setFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
-
-//export const changeText = (textChange) => ({type: CHANGE_INFORMATION_NEW_USERS, textChange});
 export const addTextAC = (textInfo) => ({type: ADD_INFORMATION_NEW_USERS, textInfo});
 
 export default usersReducer;

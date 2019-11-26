@@ -7,7 +7,7 @@ const NavBar = () => {
     <nav className={s.header}>
       <NavLink activeClassName={s.activeLink} to="/MainPage">Страница товара</NavLink>
       <NavLink to="/Users">Пользователи</NavLink>
-      <NavLink to="/AddUsers">Сравнения Нового Пользователя</NavLink>
+      <NavLink to="/AddUsers">Добавить нового пользователя</NavLink>
     </nav>
   )
 }

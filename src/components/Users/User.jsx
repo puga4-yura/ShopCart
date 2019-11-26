@@ -8,7 +8,9 @@ import {NavLink} from "react-router-dom";
 
 
 class Users extends React.Component {
-
+  
+  
+  
   // componentDidMount() {
   //   this.props.setFetching(true)
   //   axiox.get("http://localhost:7200/users").then(response => {
@@ -19,6 +21,7 @@ class Users extends React.Component {
   // }
 
   render() {
+    debugger
     console.log(this.props)
     return <>
       {this.props.isFetching ? <Preloader/> : null}
