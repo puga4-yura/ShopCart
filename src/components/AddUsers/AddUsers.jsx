@@ -1,72 +1,129 @@
 import React from 'react'
 import s from './AddUsers.module.css'
-import {addTextAC} from "../../store/user-reducer";
 import {withRouter} from 'react-router-dom'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, formValueSelector,  FieldArray} from 'redux-form'
 
 
-const AddUsers = (data) => {
-  const props = data.allData
-  
-  let textInfo = data.textInfo
-  let addNewUser = () => {
-    props.changeText(textInfo)
-    props.history.push('/users/');
-  };
-  
-  let fieldChange = (event) => {
-    data.fieldChange(event)
-  };
+// const AddUsers = (data) => {
+//   const props = data.allData
+//   console.log(props)
+//   let textInfo = data.textInfo
+//   let addNewUser = (value) => {
+//     props.changeText(value)
+//     props.history.push('/users/');
+//   };
+//
+//   let fieldChange = (event) => {
+//     data.fieldChange(event)
+//   };
+//
+//   return (
+//     <div className={s.container}>
+//       <form onSubmit={props.handleSubmit}>
+//         <div className={s.wrap}>
+//           <div className={s.title}>
+//             <div>Выбирете картинку</div>
+//             <input name='photo' type="file"/>
+//           </div>
+//           <button onClick={addNewUser} className={s.addBtn}>Добавить новый новар</button>
+//         </div>
+//         <div>
+//           <div className={s.title}>Имя</div>
+//           <Field type="text" placeholder="Имя" component="input" name="name" />
+//         </div>
+//         <div>
+//           <div className={s.title}>Статус</div>
+//           <Field type="text" placeholder="Статус" component="input" name="state" />
+//         </div>
+//         <div>
+//           <div className={s.title}>Страна</div>
+//           <select className={s.select} name="country" id="" onChange={fieldChange}>
+//             <option></option>
+//             /*Object.keys(countries).map*/
+//             {Object.keys(props.UserInfo.countries).map((countryId) => {
+//                 const country = props.UserInfo.countries[countryId];
+//                 return <option id={countryId} value={countryId}>{country}</option>
+//               }
+//             )}
+//
+//           </select>
+//         </div>
+//         <div>
+//           <div className={s.title}>Город</div>
+//           <select className={s.select} name="city" id="" onChange={fieldChange}>
+//             <option></option>
+//             {Object.keys(data.cities)
+//               .map((cityId) => {
+//                   const city = data.cities[cityId];
+//                   return <option id={cityId} value={cityId}>{city.name}</option>
+//                 }
+//               )}
+//           </select>
+//         </div>
+//       </form>
+//     </div>
+//   )
+// }
+
+const selectLocation = (fields) => {
   
   return (
-    <div className={s.container}>
-      <form action="">
-        <div className={s.wrap}>
-          <div className={s.title}>
-            <div>Выбирете картинку</div>
-            <input name='photo' type="file"/>
-          </div>
-          <button onClick={addNewUser} className={s.addBtn}>Добавить новый новар</button>
-        </div>
-        <div>
-          <div className={s.title}>Имя</div>
-          <Field type="text" placeholder="Имя" component={'input'} name='name' />
-        </div>
-        <div>
-          <div className={s.title}>Статус</div>
-          <input type="text" placeholder="Статус" component={'input'} name='state' />
-        </div>
-        <div>
-          <div className={s.title}>Страна</div>
-          <select className={s.select} name="country" id="" onChange={fieldChange}>
-            <option></option>
-            /*Object.keys(countries).map*/
-            {Object.keys(props.UserInfo.countries).map((countryId) => {
-                const country = props.UserInfo.countries[countryId];
-                return <option id={countryId} value={countryId}>{country}</option>
-              }
-            )}
-          
-          </select>
-        </div>
-        <div>
-          <div className={s.title}>Город</div>
-          <select className={s.select} name="city" id="" onChange={fieldChange}>
-            <option></option>
-            {Object.keys(data.cities)
-              .map((cityId) => {
-                  const city = data.cities[cityId];
-                  return <option id={cityId} value={cityId}>{city.name}</option>
-                }
-              )}
-          </select>
-        </div>
-      </form>
+    <div>
+      <div className={s.title}>Страна</div>
+      <select  name="country" id="" >
+        <option></option>
+        /*ObjectclassName={s.select}.keys(countries).map*/
+        {Object.keys(props.UserInfo.countries).map((countryId) => {
+            const country = props.UserInfo.countries[countryId];
+            return <option id={countryId} value={countryId}>{country}</option>
+          }
+        )}
+
+      </select>
+
+      {/*<div className={s.title}>Город</div>*/}
+      {/*<select className={s.select} name="city" id="" onChange={fieldChange}>*/}
+      {/*  <option></option>*/}
+      {/*  {Object.keys(data.cities)*/}
+      {/*    .map((cityId) => {*/}
+      {/*        const city = data.cities[cityId];*/}
+      {/*        return <option id={cityId} value={cityId}>{city.name}</option>*/}
+      {/*      }*/}
+      {/*    )}*/}
+      {/*</select>*/}
     </div>
   )
 }
 
-const LoginFormRedux = reduxForm({form: 'addUser'})(AddUsers)
+const AddUsers = (props) => {
+    console.log(props)
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div className={s.wrap}>
+        <div className={s.title}>
+          <div>Выбирете картинку</div>
+          <input name='photo' type="file"/>
+        </div>
+        <button className={s.addBtn}>Добавить новый новар</button>
+      </div>
+      <div>
+        <div className={s.title}>Имя</div>
+        <Field type="text" placeholder="Имя" component="input" name="name"/>
+      </div>
+      <div>
+        <div className={s.title}>Статус</div>
+        <Field type="text" placeholder="Статус" component="input" name="state"/>
+      </div>
+      <div>
+        <div className={s.title}>Страна</div>
+        <FieldArray name="country" component="selectLocation" />
+
+      </div>
+    </form>
+  )
+};
+
+const LoginFormRedux = reduxForm({form: 'addUsers'})(AddUsers)
 
 
 class AddUsersClass extends React.Component {
@@ -93,31 +150,36 @@ class AddUsersClass extends React.Component {
     
   }
   
-  textInfo = {
-    country: '',
-    city: '',
-    id: null,
-    photo: '',
-    name: '',
-    state: '',
-    
-  };
-  
-  
+// textInfo = {
+//     country: '',
+//     city: '',
+//     id: null,
+//     photo: '',
+//     name: '',
+//     state: '',
+//
+//   };
+
+
   fieldChange = (event) => {
     const name = event.target.name;
     this.textInfo[event.target.name] = event.target.value;
-    console.log(this.textInfo)
     const value = event.target.value;
     if (name === 'country') {
       this.currenrCountryId = value;
       this.changeCity(value)
     }
   };
+
+  addNewUser = (value) => {
+     this.props.changeText(value)
+     this.props.history.push('/users/');
+  };
   
   render() {
     return (
       <LoginFormRedux
+        onSubmit={this.addNewUser}
         textInfo={this.textInfo}
         fieldChange={this.fieldChange.bind(this)}
         cities={this.state.cities}

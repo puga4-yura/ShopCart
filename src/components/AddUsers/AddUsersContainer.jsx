@@ -13,8 +13,8 @@ let mapStateToProps =(state) => {
 
 let mapDispatchToProps =(dispatch) => {
       return {
-        changeText: (textInfo) => {
-          dispatch(addTextAC(textInfo))
+        changeText: (addUser) => {
+          dispatch(addTextAC(addUser))
         }
       }
 };

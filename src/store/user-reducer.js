@@ -124,6 +124,7 @@ let initialState = {
 
 
 const usersReducer = (state = initialState, action) => {
+    debugger
     switch (action.type) {
         case FOLLOW:
             return {
@@ -165,9 +166,9 @@ const usersReducer = (state = initialState, action) => {
                 id: {maxid},
                 photoUrl: '',
                 followed: false,
-                fullName: action.textInfo.name,
-                status: action.textInfo.state,
-                location: {country: action.textInfo.country, city: action.textInfo.city}
+                fullName: action.values.name,
+                status: action.values.state,
+                //location: {country: action.textInfo.country, city: action.textInfo.city}
             }
      
             return {...state, users: [newPost, ...state.users]}
@@ -183,6 +184,6 @@ export const follow = (usersId) => ({type: FOLLOW, usersId})
 export const unfollow = (usersId) => ({type: UNFOLLOW, usersId})
 export const setUsers = (users) => ({type: SET_USERS, users})
 export const setFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
-export const addTextAC = (textInfo) => ({type: ADD_INFORMATION_NEW_USERS, textInfo});
+export const addTextAC = (values) => ({type: ADD_INFORMATION_NEW_USERS, values});
 
 export default usersReducer;

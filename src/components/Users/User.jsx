@@ -43,8 +43,8 @@ class Users extends React.Component {
                 <div>{u.fullName}</div>
                 <div>{u.status}</div>
                 
-                <div>{this.props.countries[u.location.country]}</div>
-                <div>{this.props.cities[u.location.city].name}</div>
+                {/*<div>{this.props.countries[u.location.country]}</div>*/}
+                {/*<div>{this.props.cities[u.location.city].name}</div>*/}
               </div>
             </div>
           )
