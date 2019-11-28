@@ -1,11 +1,11 @@
 import React from 'react'
 import s from './AddUsers.module.css'
 import {withRouter} from 'react-router-dom'
-import { Field, reduxForm, formValueSelector,  FieldArray} from 'redux-form'
-import {required, minLength} from  "../../common/validation/validation"
+import {Field, reduxForm, formValueSelector, FieldArray} from 'redux-form'
+import {required, minLength} from "../../common/validation/validation"
 
 // деструктуризация
-let minLength3 =  minLength(3)
+let minLength3 = minLength(3)
 
 // const AddUsers = (data) => {
 //   const props = data.allData
@@ -67,91 +67,108 @@ let minLength3 =  minLength(3)
 //     </div>
 //   )
 // }
-
-const selectLocation = ({input, meta, ...props,}) => {
-
-  return (
-    <div>
-      <div className={s.title}>Страна</div>
-      <select {...props} {...input}>
-       
-        /*ObjectclassName={s.select}.keys(countries).map*/
-        {Object.keys(props.UserInfo.countries).map((countryId) => {
-            const country = props.UserInfo.countries[countryId];
+const select1 = ({input, meta, asyncValidating, touched, error, ...props,}) => {
+    const options = (Object.keys(props.countries).map((countryId) => {
+            const country = props.countries[countryId];
             return <option id={countryId} value={countryId}>{country}</option>
-          }
-        )}
+        }
+    ));
+    console.log(props.countries);
+    return (<div>
+        <select className='1'>
+            {(Object.keys(props.countries).map((countryId) => {
+                    const country = props.countries[countryId];
+                    return <option id={countryId} value={countryId}>{country}</option>})
+            )};
+            {touched && error && <span>{error}</span>}
+        </select>
+    </div>)
+}
+const selectLocation = ({input, meta, ...props,}) => {
+console.log(props)
+    return (
+        <div>
+            <div className={s.title}>Страна</div>
+            <select {...props} {...input}>
 
-      </select>
+                /*ObjectclassName={s.select}.keys(countries).map*/
+                {Object.keys(props.allData.UserInfo.countries).map((countryId) => {
+                        const country = props.allData.UserInfo.countries[countryId];
+                        return <option id={countryId} value={countryId}>{country}</option>
+                    }
+                )}
 
-      {/*<div className={s.title}>Город</div>*/}
-      {/*<select className={s.select} name="city" id="" onChange={fieldChange}>*/}
-      {/*  <option></option>*/}
-      {/*  {Object.keys(data.cities)*/}
-      {/*    .map((cityId) => {*/}
-      {/*        const city = data.cities[cityId];*/}
-      {/*        return <option id={cityId} value={cityId}>{city.name}</option>*/}
-      {/*      }*/}
-      {/*    )}*/}
-      {/*</select>*/}
-    </div>
-  )
+            </select>
+
+            {/*<div className={s.title}>Город</div>*/}
+            {/*<select className={s.select} name="city" id="" onChange={fieldChange}>*/}
+            {/*  <option></option>*/}
+            {/*  {Object.keys(data.cities)*/}
+            {/*    .map((cityId) => {*/}
+            {/*        const city = data.cities[cityId];*/}
+            {/*        return <option id={cityId} value={cityId}>{city.name}</option>*/}
+            {/*      }*/}
+            {/*    )}*/}
+            {/*</select>*/}
+        </div>
+    )
 }
 
 const AddUsers = (props) => {
     console.log(props)
-  return (
-    <form onSubmit={props.handleSubmit}>
-      <div className={s.wrap}>
-        <div className={s.title}>
-          <div>Выбирете картинку</div>
-          <input name='photo' type="file"/>
-        </div>
-        <button className={s.addBtn}>Добавить новый новар</button>
-      </div>
-      <div>
-        <div className={s.title}>Имя</div>
-        <Field validate={[required]} type="text" placeholder="Имя" component="input" name="name"/>
-      </div>
-      <div>
-        <div className={s.title}>Статус</div>
-        <Field validate={[required, minLength3]} type="text" placeholder="Статус" component="input" name="state"/>
-      </div>
-      <div>
-        <div className={s.title}>Страна</div>
-        <Field component={selectLocation} />
-      </div>
-    </form>
-  )
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div className={s.wrap}>
+                <div className={s.title}>
+                    <div>Выбирете картинку</div>
+                    <input name='photo' type="file"/>
+                </div>
+                <button className={s.addBtn}>Добавить новый новар</button>
+            </div>
+            <div>
+                <div className={s.title}>Имя</div>
+                <Field validate={[required]} type="text" placeholder="Имя" component="input" name="name"/>
+            </div>
+            <div>
+                <div className={s.title}>Статус</div>
+                <Field validate={[required, minLength3]} type="text" placeholder="Статус" component="input"
+                       name="state"/>
+            </div>
+            <div>
+                <div className={s.title}>Страна</div>
+                <Field component={selectLocation} props={props}/>
+            </div>
+        </form>
+    )
 };
 
 const LoginFormRedux = reduxForm({form: 'addUsers'})(AddUsers)
 
 
 class AddUsersClass extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      cities: Object.keys(props.UserInfo.cities)
-        .filter(cityId => props.UserInfo.cities[cityId].country === this.currenrCountryId)
-        .map(cityId => props.UserInfo.cities[cityId])
+    constructor(props) {
+        super(props)
+        this.state = {
+            cities: Object.keys(props.UserInfo.cities)
+                .filter(cityId => props.UserInfo.cities[cityId].country === this.currenrCountryId)
+                .map(cityId => props.UserInfo.cities[cityId])
+        }
     }
-  }
-  
-  currenrCountryId = 1;
-  
-  changeCity(currenrCountryId) {
-    let newCities = {};
-    Object.keys(this.props.UserInfo.cities)
-      .filter(cityId => this.props.UserInfo.cities[cityId].country == currenrCountryId)
-      .forEach(cityId => {
-        newCities[cityId] = this.props.UserInfo.cities[cityId];
-      });
-    
-    this.setState({cities: newCities})
-    
-  }
-  
+
+    currenrCountryId = 1;
+
+    changeCity(currenrCountryId) {
+        let newCities = {};
+        Object.keys(this.props.UserInfo.cities)
+            .filter(cityId => this.props.UserInfo.cities[cityId].country == currenrCountryId)
+            .forEach(cityId => {
+                newCities[cityId] = this.props.UserInfo.cities[cityId];
+            });
+
+        this.setState({cities: newCities})
+
+    }
+
 // textInfo = {
 //     country: '',
 //     city: '',
@@ -163,32 +180,33 @@ class AddUsersClass extends React.Component {
 //   };
 
 
-  fieldChange = (event) => {
-    const name = event.target.name;
-    this.textInfo[event.target.name] = event.target.value;
-    const value = event.target.value;
-    if (name === 'country') {
-      this.currenrCountryId = value;
-      this.changeCity(value)
-    }
-  };
+    fieldChange = (event) => {
+        const name = event.target.name;
+        this.textInfo[event.target.name] = event.target.value;
+        const value = event.target.value;
+        if (name === 'country') {
+            this.currenrCountryId = value;
+            this.changeCity(value)
+        }
+    };
 
-  addNewUser = (value) => {
-     this.props.changeText(value)
-     this.props.history.push('/users/');
-  };
-  
-  render() {
-    return (
-      <LoginFormRedux
-        onSubmit={this.addNewUser}
-        textInfo={this.textInfo}
-        fieldChange={this.fieldChange.bind(this)}
-        cities={this.state.cities}
-        allData={this.props}/>
-    )
-    
-  }
+    addNewUser = (value) => {
+        this.props.changeText(value)
+        this.props.history.push('/users/');
+    };
+
+    render() {
+        return (
+            <LoginFormRedux
+                onSubmit={this.addNewUser}
+                textInfo={this.textInfo}
+                fieldChange={this.fieldChange.bind(this)}
+                cities={this.state.cities}
+                countries={this.props.UserInfo.countries}
+                allData={this.props}/>
+        )
+
+    }
 }
 
 export default withRouter(AddUsersClass);
