@@ -2,7 +2,10 @@ import React from 'react'
 import s from './AddUsers.module.css'
 import {withRouter} from 'react-router-dom'
 import { Field, reduxForm, formValueSelector,  FieldArray} from 'redux-form'
+import {required, minLength} from  "../../common/validation/validation"
 
+// деструктуризация
+let minLength3 =  minLength(3)
 
 // const AddUsers = (data) => {
 //   const props = data.allData
@@ -65,13 +68,13 @@ import { Field, reduxForm, formValueSelector,  FieldArray} from 'redux-form'
 //   )
 // }
 
-const selectLocation = (fields) => {
-  
+const selectLocation = ({input, meta, ...props,}) => {
+
   return (
     <div>
       <div className={s.title}>Страна</div>
-      <select  name="country" id="" >
-        <option></option>
+      <select {...props} {...input}>
+       
         /*ObjectclassName={s.select}.keys(countries).map*/
         {Object.keys(props.UserInfo.countries).map((countryId) => {
             const country = props.UserInfo.countries[countryId];
@@ -108,16 +111,15 @@ const AddUsers = (props) => {
       </div>
       <div>
         <div className={s.title}>Имя</div>
-        <Field type="text" placeholder="Имя" component="input" name="name"/>
+        <Field validate={[required]} type="text" placeholder="Имя" component="input" name="name"/>
       </div>
       <div>
         <div className={s.title}>Статус</div>
-        <Field type="text" placeholder="Статус" component="input" name="state"/>
+        <Field validate={[required, minLength3]} type="text" placeholder="Статус" component="input" name="state"/>
       </div>
       <div>
         <div className={s.title}>Страна</div>
-        <FieldArray name="country" component="selectLocation" />
-
+        <Field component={selectLocation} />
       </div>
     </form>
   )
